@@ -1,1 +1,0 @@
-# health_research_portal
