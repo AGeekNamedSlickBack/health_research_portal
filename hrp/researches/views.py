@@ -1,6 +1,8 @@
 """Research views."""
+from django.shortcuts import render
 from django.views.generic import ListView
 
+from .filters import ResearchFilter
 from .models import Research
 
 
@@ -9,3 +11,9 @@ class ResearchListView(ListView):
 
     queryset = Research.objects.all()
     context_object_name = "researches"
+
+
+def research_search(request):
+    """Filter view."""
+    f = ResearchFilter(request.GET, queryset=Research.objects.all())
+    return render(request, "researches/search.html", {"filter": f})
