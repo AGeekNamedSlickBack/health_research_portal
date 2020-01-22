@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'research:malaria' %}">Malaria</a></li>
+    <li class="breadcrumb-item">Diagnosis</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block research %}
+<h3>Malaria diagnosis</h3>
+<br>
+  <div class="table-responsive-sm">
+    <table class="table">
+    {% for malaria_diagnosis in malaria_diagnosis %}
+        <tbody>
+        <tr>
+            <td><a href="{{ malaria_diagnosis.url }}" target="_blank">{{ malaria_diagnosis.title }}</a></td>
+            {% comment %} <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td> {% endcomment %}
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+  </div>
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+<br>
+{% endblock %}

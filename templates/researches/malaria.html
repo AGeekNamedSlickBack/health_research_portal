@@ -12,36 +12,21 @@
 {% endblock%}
 
 {% block research %}
-<h3>Malaria</h3>
-<br>
-  <div class="table-responsive-sm">
-    <table class="table">
-    {% for malaria_research in malaria_researches %}
-        <tbody>
-        <tr>
-            <td><a href="{{ malaria_research.url }}">{{ malaria_research.title }}</a></td>
-            <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td>
-        </tr>
-        </tbody>
-    {% endfor %}
-    </table>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3>Key facts about malaria</h3>
+    <p class="lead"><small>
+      Key facts. Malaria is a life-threatening disease caused by parasites 
+      that are transmitted to people through the bites of infected female 
+      Anopheles mosquitoes. In 2018, there were an estimated 228 million 
+      cases of malaria worldwide.</small>
+     </p>
   </div>
-<div class="pagination">
-  <span class="step-links">
-      {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
-
-      <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-      </span>
-
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-  </span>
 </div>
-<br>
+<ul>
+  <a href="{% url 'research:malaria_diagnosis' %}"><li>Diagnosis</li></a>
+  <a href="{% url 'research:malaria_treatment' %}"><li>Treatment</li></a>
+  <a href="{% url 'research:malaria_location' %}"><li>Location-based</li></a>
+</ul>
 {% endblock %}

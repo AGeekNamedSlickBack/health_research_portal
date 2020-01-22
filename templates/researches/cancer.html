@@ -12,36 +12,23 @@
 {% endblock%}
 
 {% block research %}
-<h3>Cancer</h3>
-<br>
-  <div class="table-responsive-sm">
-    <table class="table">
-    {% for cancer_research in cancer_researches %}
-        <tbody>
-        <tr>
-            <td><a href="{{ cancer_research.url }}">{{ cancer_research.title }}</a></td>
-            <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td>
-        </tr>
-        </tbody>
-    {% endfor %}
-    </table>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3>Key facts about cancer</h3>
+    <p class="lead"><small>
+      Cancers figure among the leading causes of death worldwide, accounting for 9.6 million 
+      deaths in 2018. Lung, colorectal, stomach, liver and breast cancers cause the most cancer 
+      deaths each year. The most frequent types of cancer differ between men and women.
+      About one-third of cancer deaths are due to the five leading behavioral and dietary risks: 
+      high body mass index, low fruit and vegetable intake, physical inactivity, tobacco use, 
+      alcohol use and are therefore preventable.</small>
+     </p>
   </div>
-<div class="pagination">
-  <span class="step-links">
-      {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
-
-      <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-      </span>
-
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-  </span>
 </div>
-<br>
+<ul>
+  <a href="{% url 'research:cancer_diagnosis' %}"><li>Diagnosis</li></a>
+  <a href="{% url 'research:cancer_treatment' %}"><li>Treatment</li></a>
+  <a href="{% url 'research:cancer_location' %}"><li>Location-based</li></a>
+</ul>
 {% endblock %}

@@ -10,8 +10,11 @@ def test_research_model(research):
     assert research.title == "Kitu flani researched"
     assert research.scraped_date == "2020-1-19"
     assert research.category == "malaria"
+    assert research.keyword == "malaria_plasmodium"
 
 
 def test_research_str_representation(research):
     """Test title string rep."""
-    assert str(research) == "Kitu flani researched - malaria"
+    assert (
+        str(research) == "Kitu flani researched - malaria - malaria_plasmodium"
+    )

@@ -22,23 +22,70 @@ class SignUp(CreateView):
     template_name = "registration/signup.html"
 
 
-class CancerListView(ListView):
-    """List view of researches."""
+class CancerTemplateView(TemplateView):
+    """Cancer page template view."""
 
-    queryset = Research.objects.filter(category="cancer")
-    context_object_name = "cancer_researches"
     template_name = "researches/cancer.html"
-    paginate_by = 10
 
 
-class MalariaListView(ListView):
+class CancerDiagnosisListView(ListView):
     """List view of researches."""
 
-    queryset = Research.objects.filter(category="malaria")
-    context_object_name = "malaria_researches"
-    template_name = "researches/malaria.html"
+    queryset = Research.objects.filter(keyword="cancer_diagnosis")
+    context_object_name = "cancer_diagnosis"
+    template_name = "researches/cancer_diagnosis.html"
     paginate_by = 10
 
+
+class CancerTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="cancer_treatment")
+    context_object_name = "cancer_treatment"
+    template_name = "researches/cancer_treatment.html"
+    paginate_by = 10
+
+
+class CancerLocationListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="cancer_county")
+    context_object_name = "cancer_location"
+    template_name = "researches/cancer_location.html"
+    paginate_by = 10
+
+
+class MalariaTemplateView(TemplateView):
+    """Malaria page template view."""
+
+    template_name = "researches/malaria.html"
+
+
+class MalariaDiagnosisListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="malaria_Plasmodium")
+    context_object_name = "malaria_diagnosis"
+    template_name = "researches/malaria_diagnosis.html"
+    paginate_by = 10
+
+
+class MalariaTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="malaria_treatment")
+    context_object_name = "malaria_treatment"
+    template_name = "researches/malaria_treatment.html"
+    paginate_by = 10
+
+
+class MalariaLocationListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="malaria_County")
+    context_object_name = "malaria_location"
+    template_name = "researches/malaria_location.html"
+    paginate_by = 10
 
 def research_search(request):
     """Filter view."""
