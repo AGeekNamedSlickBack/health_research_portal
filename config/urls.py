@@ -18,5 +18,6 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
-    url(r'^reviews/', include('hrp.reviews.urls', namespace='reviews'))
+    url(r'^reviews/', include('hrp.reviews.urls', namespace='reviews')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
