@@ -2,7 +2,7 @@
 import pytest
 from model_bakery import baker
 
-from hrp.researches.models import Research, ResearchCategory
+from hrp.researches.models import Research
 
 pytestmark = pytest.mark.django_db
 
@@ -15,10 +15,5 @@ def research():
         url="http://urlyauongo.com",
         title="Kitu flani researched",
         scraped_date="2020-1-19",
+        category="malaria"
     )
-
-
-@pytest.fixture
-def research_category(research):
-    """Research category."""
-    return baker.make(ResearchCategory, research=research, category="malaria",)
