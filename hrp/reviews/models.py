@@ -17,9 +17,11 @@ class Review(models.Model):
     ]
     research = models.ForeignKey(Research, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)
-    username = models.CharField(max_length=100)
-    comment = models.TextField()
-    rating = models.IntegerField(choices=RATING_CHOICES)  # Better rating
+    username = models.CharField(max_length=100, blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+    rating = models.IntegerField(
+        choices=RATING_CHOICES, blank=True, null=True
+    )  # Better rating
 
     def __str__(self):
         """Str representation."""

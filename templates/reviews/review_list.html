@@ -1,9 +1,33 @@
-{% block content %}
-    <h2>Reviews</h2>
-    <ul>
-        {% for review in review_list %}
-            <li>Research: {{ review.research.title}} - Rated: {{ review.rating}}</li>
-            <li>Comment: {{ review.comment}}</li>
-        {% endfor %}
-    <ul>
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:list' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'review:create' %}">Create</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'review:list' %}">Reviews</a></li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block review %}
+<div class="table-responsive-sm">
+<table class="table">
+    <thead>
+    <tr>
+    <th scope="col">Comments</th>
+    <th scope="col">Ratings</th>
+</tr>
+</thead>
+{% for review in review_list %}
+    <tbody>
+    <tr>
+        <td>{{ review.comment }}</td>
+        <td>{{ review.rating }}</td>
+    </tr>
+    </tbody>
+{% endfor %}
+</table>
+</div>
+</div>
 {% endblock %}

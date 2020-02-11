@@ -1,4 +1,11 @@
 """Research views."""
-# from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from .models import Research
+
+
+class ResearchListView(ListView):
+    """List view of spareparts."""
+
+    queryset = Research.objects.all()
+    context_object_name = "researches"
