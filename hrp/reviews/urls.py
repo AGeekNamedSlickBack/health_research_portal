@@ -1,9 +1,10 @@
 """Reviews urlconf."""
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 app_name = 'reviews'
 urlpatterns = [
-    url(regex=r'^$', view=views.ReviewList.as_view(), name='list'),
+    path('', view=views.ReviewList.as_view(), name='list'),
+    path('create/', view=views.ReviewCreateView.as_view(), name='create'),
 ]
