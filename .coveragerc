@@ -1,7 +1,7 @@
 [run]
 branch=True
 source=hrp
-omit=config/*, hrp/**/migrations/*, hrp/**/apps.py, hrp/**/admin.py
+omit=config/*, hrp/**/migrations/*, hrp/**/apps.py, hrp/**/admin.py, hrp/**/search_indexes.py
 
 [report]
 show_missing=True

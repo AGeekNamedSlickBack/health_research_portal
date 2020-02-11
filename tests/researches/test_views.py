@@ -13,3 +13,12 @@ def test_research_list_view():
     response = client.get(url)
 
     assert response.status_code == 200
+
+
+def test_research_search_view():
+    """Test the research list view."""
+    client = Client()
+    url = reverse("research:search")
+    response = client.get(url)
+
+    assert response.status_code == 200
