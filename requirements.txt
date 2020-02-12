@@ -1,4 +1,4 @@
-Django==2.2.9
+Django==2.2.10
 pytest-cov>=2.8.1 
 pytest-django>=3.7.0 
 tox>=3.14.3 
