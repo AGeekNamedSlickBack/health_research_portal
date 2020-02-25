@@ -6,10 +6,28 @@ from django.urls import reverse
 pytestmark = pytest.mark.django_db
 
 
-def test_research_list_view():
+def test_index_view():
     """Test the research list view."""
     client = Client()
-    url = reverse("research:list")
+    url = reverse("research:index")
+    response = client.get(url)
+
+    assert response.status_code == 200
+
+
+def test_cancer_list_view():
+    """Test the research list view."""
+    client = Client()
+    url = reverse("research:cancer")
+    response = client.get(url)
+
+    assert response.status_code == 200
+
+
+def test_malaria_list_view():
+    """Test the research list view."""
+    client = Client()
+    url = reverse("research:malaria")
     response = client.get(url)
 
     assert response.status_code == 200
