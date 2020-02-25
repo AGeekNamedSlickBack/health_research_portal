@@ -182,7 +182,7 @@ The proposed system aggregates the following concepts:
 
     #) Reviewing
 
-       The minded and processed researches will be ordered according to their relevance. Relevance 
+       The mined and processed researches will be ordered according to their relevance. Relevance 
        will be determined by the number of reviews a research gets form its users.
 
 
@@ -248,3 +248,12 @@ System design for the project has been represented using **Data Flow Diagrams**.
     :figclass: align-left
 
     *Automated Health Research Portal Level 1 DFD*
+
+.. figure:: dfd.png
+    :width: 300px
+    :align: center
+    :height: 300px
+    :alt: Level 1 DFD
+    :figclass: align-left
+
+    *Automated Health Research Portal database ERD*

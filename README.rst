@@ -30,7 +30,7 @@ Clone the project
 
 Set up the environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Create a .env file in your parent project directory
+Create a env.sh file in your parent project directory
 
 .. code:: bash
 
@@ -62,7 +62,7 @@ Create a virtual environment for your project
 
 .. code:: bash
 
-	$ cd python3 -m venv name-of-your-virtualenv
+	$ python3 -m venv name-of-your-virtualenv
 
 Activate your virtual environment.
 
@@ -96,6 +96,12 @@ To test the project:
 .. code:: bash
 
 	(name-of-your-virtualenv)$ pytest # This will run all the tests in the project
+
+To test the project:
+
+.. code:: bash
+
+	(name-of-your-virtualenv)$ tox -r # This will run all the tests in the project
 
 Credits
 -------
