@@ -11,6 +11,7 @@ class ResearchListView(ListView):
 
     queryset = Research.objects.all()
     context_object_name = "researches"
+    paginate_by = 10
 
 
 def research_search(request):
