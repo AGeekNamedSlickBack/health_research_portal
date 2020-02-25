@@ -40,3 +40,12 @@ def test_research_search_view():
     response = client.get(url)
 
     assert response.status_code == 200
+
+
+def test_signup_view():
+    """Test the signup view."""
+    client = Client()
+    url = reverse("research:signup")
+    response = client.get(url)
+
+    assert response.status_code == 200
