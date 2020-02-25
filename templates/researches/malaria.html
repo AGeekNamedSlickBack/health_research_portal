@@ -5,30 +5,25 @@
 {% block breadcrumbs %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'research:list' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item">Malaria</li>
   </ol>
 </nav>
 {% endblock%}
 
 {% block research %}
-{% comment %} {% for research in researches %} {% endcomment %}
+<h3>Malaria</h3>
+<br>
   <div class="table-responsive-sm">
-    <p>A</p>
     <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Research List</th>
-      <th scope="col">Reviews</th>
-    </tr>
-  </thead>
-{% for research in researches %}
-    <tbody>
-      <tr>
-        <td><a href="{{ research.url }}">{{ research.title }}</a></td>
-        <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td>
-      </tr>
-    </tbody>
-{% endfor %}
+    {% for malaria_research in malaria_researches %}
+        <tbody>
+        <tr>
+            <td><a href="{{ malaria_research.url }}">{{ malaria_research.title }}</a></td>
+            <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td>
+        </tr>
+        </tbody>
+    {% endfor %}
     </table>
   </div>
 <div class="pagination">
