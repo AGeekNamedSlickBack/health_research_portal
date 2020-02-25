@@ -1,6 +1,8 @@
 """Research views."""
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, TemplateView
 
 from .filters import ResearchFilter
 from .models import Research
@@ -10,6 +12,14 @@ class Index(TemplateView):
     """Landing page."""
 
     template_name = "index.html"
+
+
+class SignUp(CreateView):
+    """Sign up view for users."""
+
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
 
 
 class CancerListView(ListView):
