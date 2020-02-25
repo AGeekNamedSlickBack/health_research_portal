@@ -13,3 +13,4 @@ django-crispy-forms>=1.8.1
 django-filter>=2.2.0
 Fabric3>=1.14.post1
 sentry-sdk>=0.14.1
+elasticsearch-dsl>=7.1.0
