@@ -9,7 +9,8 @@ class Research(models.Model):
     url = models.CharField(max_length=250, unique=True)
     title = models.CharField(max_length=250)
     scraped_date = models.DateTimeField(default=timezone.now)
+    category = models.CharField(max_length=250)
 
     def __str__(self):
         """Rep title into a human readable form."""
-        return self.title
+        return "{} - {}".format(self.title, self.category)

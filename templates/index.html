@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block research %}
+<h3>Research list</h3>
+<br>
+<button type="button" class="collapsible">C</button>
+<div class="content">
+  <ul>
+    <li><a href="{% url 'research:cancer' %}">Cancer</a></li>
+  </ul>
+</div>
+<hr>
+<button type="button" class="collapsible">M</button>
+<div class="content">
+  <ul>
+    <li><a href="{% url 'research:malaria' %}">Malaria</a></li>
+  </ul>
+</div>
+<hr>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+{% endblock %}
