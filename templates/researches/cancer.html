@@ -20,7 +20,7 @@
         <tbody>
         <tr>
             <td><a href="{{ cancer_research.url }}">{{ cancer_research.title }}</a></td>
-            <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td>
+            {% comment %} <td><a href="{% url 'researches:like' cancer_research.id %}">Like</a></td> {% endcomment %}
         </tr>
         </tbody>
     {% endfor %}

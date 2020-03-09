@@ -22,6 +22,17 @@ class SignUp(CreateView):
     template_name = "registration/signup.html"
 
 
+# class LikeView(RedirectView):
+#     """Like view for researches."""
+
+#     def get_redirect_url(self, *args, **kwargs):
+#         """Get the redirect url."""
+#         research = get_object_or_404(Research, pk=kwargs['pk'])
+#         user = self.request.user
+#         research.likes.add(user)
+#         return super().get_redirect_url(*args, **kwargs)
+
+
 class CancerListView(ListView):
     """List view of researches."""
 
