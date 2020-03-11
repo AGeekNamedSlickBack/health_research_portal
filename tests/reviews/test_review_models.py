@@ -15,6 +15,6 @@ def test_review_models(review, research):
 
 def test_review_str_representation(review):
     """Test review string representation."""
-    assert (
-        str(review) == "Research: Kitu flani researched - malaria - Rated: 4"
-    )
+    category = "- malaria - malaria_plasmodium - Rated: 4"
+    string = f"Research: Kitu flani researched {category}"
+    assert str(review) == string

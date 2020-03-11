@@ -1,7 +1,12 @@
 """Create the web scraper."""
+import urllib.request
+
+import nltk
 import requests
 from bs4 import BeautifulSoup
+from nltk.corpus import stopwords
 
+from hrp.common.util import KEYWORDS
 from hrp.researches.models import Research
 
 URL_LIST = [
@@ -25,14 +30,51 @@ def scraper():
         url = "http://erepository.uonbi.ac.ke" + research.find("a")["href"]
         title = research.find("h4").text
 
+        #  Get the categories and sub categories
+        response = urllib.request.urlopen(url)
+        html = response.read()
+        text = BeautifulSoup(html, "html.parser")
+        text = text.get_text()
+
+        tokenized_text = [t for t in text.split()]
+
+        # Remove stop words like 'a' 'the' 'an'
+        gotten_stopwords = stopwords.words("english")
+        clean_tokenized_text = tokenized_text[:]
+
+        for stopword in tokenized_text:
+            if stopword in gotten_stopwords:
+                clean_tokenized_text.remove(stopword)
+
+        count_word_frequency = nltk.FreqDist(clean_tokenized_text)
+        count_word_frequency = count_word_frequency.most_common(
+            20
+        )  # Gets most frequent words
+
+        # Parse them to get the key words
+        get_keywords = [
+            [j for j in i if type(j) == str] for i in count_word_frequency
+        ]  # Gets keywords in alist
+        try:
+            keyword = [
+                _keyword for _keyword in KEYWORDS if _keyword in get_keywords
+            ]  # Compares keywords with most_common words
+            keyword = ",".join(keyword[0])  # Gets the intersect
+            keyword = "{}_{}".format(category, keyword)
+
+        except IndexError:
+            continue
+
         if None in (url, title):
             continue
 
         try:
-            Research.objects.create(url=url, title=title, category=category)
+            Research.objects.create(
+                url=url, title=title, category=category, keyword=keyword
+            )
             print(
-                "{} - {} successfully added in category {}!".format(
-                    title, url, category
+                "{} - {} successfully added in category {} - {}".format(
+                    title, url, category, keyword
                 )
             )
         except:

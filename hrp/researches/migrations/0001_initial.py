@@ -8,18 +8,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Research',
+            name="Research",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.CharField(max_length=250, unique=True)),
-                ('title', models.CharField(max_length=250)),
-                ('scraped_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('category', models.CharField(max_length=250)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.CharField(max_length=250, unique=True)),
+                ("title", models.CharField(max_length=250)),
+                (
+                    "scraped_date",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("category", models.CharField(max_length=250)),
             ],
         ),
     ]

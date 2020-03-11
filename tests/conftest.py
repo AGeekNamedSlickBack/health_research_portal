@@ -23,7 +23,8 @@ def research():
         url="http://urlyauongo.com",
         title="Kitu flani researched",
         scraped_date="2020-1-19",
-        category="malaria"
+        category="malaria",
+        keyword='malaria_plasmodium',
     )
 
 
