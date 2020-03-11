@@ -87,6 +87,7 @@ class MalariaLocationListView(ListView):
     template_name = "researches/malaria_location.html"
     paginate_by = 10
 
+
 def research_search(request):
     """Filter view."""
     f = ResearchFilter(request.GET, queryset=Research.objects.all())
