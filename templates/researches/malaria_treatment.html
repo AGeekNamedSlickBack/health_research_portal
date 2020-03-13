@@ -13,20 +13,20 @@
 {% endblock%}
 
 {% block research %}
-<h3>Malaria treatment</h3>
 <br>
-  <div class="table-responsive-sm">
-    <table class="table">
-    {% for malaria_treatment in malaria_treatment %}
-        <tbody>
-        <tr>
-            <td><a href="{{ malaria_treatment.url }}" target="_blank">{{ malaria_treatment.title }}</a></td>
-            {% comment %} <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td> {% endcomment %}
-        </tr>
-        </tbody>
-    {% endfor %}
-    </table>
-  </div>
+{% for malaria_treatment in malaria_treatment %}
+<div class="list-group">
+  <a href="{% url 'research:research-detail' malaria_treatment.id %}" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <strong><p class="mb-1">{{ malaria_treatment.title }}</p></strong>
+      <small class="text-muted">{{ malaria_treatment.scraped_date }}</small>
+    </div>
+    <br>
+    <small class="text-muted">Source: {{ malaria_treatment.url }}</small>
+  </a>
+</div>
+<br>
+{% endfor %}
 <div class="pagination">
   <span class="step-links">
       {% if page_obj.has_previous %}

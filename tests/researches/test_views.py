@@ -24,6 +24,24 @@ def test_cancer_template_view():
     assert response.status_code == 200
 
 
+def test_discussion_view(research):
+    """Test the research list view."""
+    client = Client()
+    url = reverse("research:discussions", args=(research.id,))
+    response = client.get(url)
+
+    assert response.status_code == 302
+
+
+# def test_reply_view(research, discussion):
+#     """Test the research list view."""
+#     client = Client()
+#     url = reverse("research:discussions", args=(discussion.id,))
+#     response = client.get(url)
+
+#     assert response.status_code == 200
+
+
 def test_cancer_diagnosis_list_view():
     """Test the research list view."""
     client = Client()

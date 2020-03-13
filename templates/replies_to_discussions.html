@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'research:replies_to_discussions' replied_on_discussion.id %}">{{ replied_on_discussion.id }}</a></li>
+    <li class="breadcrumb-item">Comments</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block research %}
+<br>
+<ul class="list-group">
+  <li class="list-group-item active">{{ replied_on_discussion.discussion }}</li>
+</ul>
+<br>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button type="submit" class="btn btn-outline-primary btn-sm">Comment on discussion</button>
+    </form>
+</div>
+<br>
+
+<hr>
+{% for replies_to_discussions in replies_to_discussions %}
+<div class="discussion_container">
+  <img src="{% static 'images/index.png' %}" alt="Avatar" style="width:50px">
+  <small><p><span >{{ replies_to_discussions.created_by }}</span> {{ replies_to_discussions.created_on }}</p></small>
+  <hr>
+  <p>{{ replies_to_discussions.reply }}</p>
+</div>
+{% endfor %}
+{% endblock %}

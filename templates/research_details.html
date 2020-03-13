@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block research %}
+<br>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h4 class="col-md-10 card-title">{{ object.title }}</h4>
+      {% if recommender in recommenders%}
+        <a href="{% url 'research:recommends' object.id %}">
+          <button type="button" class="btn btn-outline-primary btn-sm">
+          Unreccomend ({{ recommends_count }})</button></a>
+      {% else %}
+        <a href="{% url 'research:recommends' object.id %}">
+          <button type="button" class="btn btn-outline-primary btn-sm">
+          Reccomend ({{ recommends_count }})</button></a>
+      {% endif %}
+    </div>
+    <hr>
+    <br>
+    <p class="card-text text-muted">This research has been sourced from: <a href="{{ object.url }}" target="_blank">{{ object.url }}</a></p>
+    <p class="card-text text-muted"><strong> Scraped Date:</strong> {{ object.scraped_date|date }}</p>
+    <p class="card-text text-muted"><strong>Research Keyword:</strong>  {{ object.keyword }}</p>
+    <a href="{% url 'research:discussions' object.id %}">
+        <button type="button" class="btn btn-outline-primary btn-sm">
+        Discussions ({{ object.discussions.count }})</button></a>
+    <blockquote class="blockquote mb-0">
+        <br>
+    <footer class="blockquote-footer">Scraped by <cite title="Source Title">Health Research Portal</cite></footer>
+    </blockquote>
+  </div>
+</div>
+{% endblock%}

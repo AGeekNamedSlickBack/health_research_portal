@@ -10,12 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Health Research Portal</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'logo/pulse.png' %}"/>
+    <title>H.R.P</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'logo/pills.png' %}"/>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
   </head>
   </head>
-  <body>
+  <body style="background-color: #F5F5F5;">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -24,9 +24,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
   {% comment %} Navbar start {% endcomment %}
-  <nav class="navbar navbar-expand-lg navbar-light bg-light", style="background-color:#563d7c !important;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light", style="background-color:#563d7c !important;">
     <a href="{% url 'researches:index' %}" class="navbar-brand">
-      <img src="{% static 'logo/pulse.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""> Health Research Portal
+      <img src="{% static 'logo/pills.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""> Health Research Portal
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit" style="color:black !important;">Search</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit";">Search</button>
       </form>
     </div>
   </nav>

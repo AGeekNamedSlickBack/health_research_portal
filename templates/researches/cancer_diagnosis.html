@@ -13,20 +13,21 @@
 {% endblock%}
 
 {% block research %}
-<h3>Cancer diagnosis</h3>
 <br>
-  <div class="table-responsive-sm">
-    <table class="table">
-    {% for cancer_diagnosis in cancer_diagnosis %}
-        <tbody>
-        <tr>
-            <td><a href="{{ cancer_diagnosis.url }}" target="_blank">{{ cancer_diagnosis.title }}</a></td>
-            {% comment %} <td><a href="{% url 'reviews:create' %}"><img src="{% static 'images/clap.png' %}" width="30" height="30" alt=""></a></td> {% endcomment %}
-        </tr>
-        </tbody>
-    {% endfor %}
-    </table>
-  </div>
+{% for cancer_diagnosis in cancer_diagnosis %}
+<div class="list-group">
+  <a href="{% url 'research:research-detail' cancer_diagnosis.id %}" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <strong><p class="mb-1">{{ cancer_diagnosis.title }}</p></strong>
+      <small class="text-muted">{{ cancer_diagnosis.scraped_date }}</small>
+    </div>
+    <br>
+    <!-- <p class="mb-1">This research has been scraped from {{cancer_diagnosis.url }}</p> -->
+    <small class="text-muted">Source: {{ cancer_diagnosis.url }}</small>
+  </a>
+</div>
+<br>
+{% endfor %}
 <div class="pagination">
   <span class="step-links">
       {% if page_obj.has_previous %}

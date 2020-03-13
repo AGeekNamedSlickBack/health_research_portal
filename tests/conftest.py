@@ -1,10 +1,16 @@
 """Test fixtures."""
 import pytest
+from django.test import Client
 from model_bakery import baker
 
-from hrp.researches.models import Research
-from hrp.reviews.models import Review
-from django.test import Client
+from hrp.researches.models import (
+    Discussion,
+    DiscussionReply,
+    Recommends,
+    Research,
+    Review,
+    ReviewChecklist,
+)
 
 pytestmark = pytest.mark.django_db
 
@@ -24,18 +30,47 @@ def research():
         title="Kitu flani researched",
         scraped_date="2020-1-19",
         category="malaria",
-        keyword='malaria_plasmodium',
+        keyword="malaria_plasmodium",
     )
 
 
 @pytest.fixture
-def review(research):
-    """Review."""
+def discussion(research):
+    """Return discussion."""
     return baker.make(
-        Review,
+        Discussion,
         research=research,
-        pub_date='2020-1-20',
-        username='ule researcher',
-        comment='Hii piece ni kali bana',
-        rating='4',
+        created_on="2020-12-1",
+        discussion="Ni ya malaria",
     )
+
+
+@pytest.fixture
+def reply(research, discussion):
+    """Return reply to discussion."""
+    return baker.make(
+        DiscussionReply,
+        discussion=discussion,
+        created_on="2020-12-1",
+        reply="Hapana ni ya cancer",
+    )
+
+
+@pytest.fixture
+def recommends(research):
+    """Return recommends."""
+    return baker.make(Recommends, research=research)
+
+
+@pytest.fixture
+def review_checklist():
+    """Return a review checklist."""
+    return baker.make(
+        ReviewChecklist, create_checklist="The research is well done"
+    )
+
+
+@pytest.fixture
+def review(review_checklist, research):
+    """Return a review."""
+    return baker.make(Review, research=research)
