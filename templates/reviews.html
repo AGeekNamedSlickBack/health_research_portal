@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block research %}
+<br>
+<ul class="list-group">
+  <li class="list-group-item active">{{ reviewed_research.title }}</li>
+</ul>
+<br>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button onclick="myFunction()" type="submit" class="btn btn-outline-primary btn-sm">Submit review(s)</button>
+    <div id="snackbar">Research successfully reviewed</div>
+    </form>
+</div>
+<br>
+<script>
+function myFunction() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
+{% endblock %}

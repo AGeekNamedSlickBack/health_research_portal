@@ -8,6 +8,27 @@ urlpatterns = [
     path("", views.Index.as_view(), name="index",),
     path("cancer/", views.CancerTemplateView.as_view(), name="cancer",),
     path(
+        "discussions/<int:pk>",
+        views.DiscussionCreateView.as_view(),
+        name="discussions",
+    ),
+    path(
+        "discussions/replies_to_discussions/<int:pk>",
+        views.DiscussionReplyCreateView.as_view(),
+        name="replies_to_discussions",
+    ),
+    path(
+        "recommend/<int:pk>/",
+        views.RecommendsRedirectView.as_view(),
+        name="recommends",
+    ),
+    path(
+        "<int:pk>/", views.ResearchDetailView.as_view(), name="research-detail"
+    ),
+    path(
+        "reviews/<int:pk>", views.ReviewCreateView.as_view(), name="reviews",
+    ),
+    path(
         "cancer/diagnosis/",
         views.CancerDiagnosisListView.as_view(),
         name="cancer_diagnosis",

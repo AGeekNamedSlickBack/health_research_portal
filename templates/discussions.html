@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'research:research-detail' discussed_research.id %}">{{ discussed_research.title }}</a></li>
+    <li class="breadcrumb-item">Discussions</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block research %}
+<br>
+<a href="{% url 'research:research-detail' discussed_research.id %}">
+<ul class="list-group">
+  <li class="list-group-item active">{{ discussed_research.title }}</li>
+</ul>
+</a>
+<br>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Discuss</button>
+    </form>
+</div>
+<br>
+
+<hr>
+{% for discussion in discussions_list %}
+<div class="discussion_container">
+  <img src="{% static 'images/index.png' %}" alt="Avatar" style="width:50px">
+  <small><p><span >{{ discussion.created_by }}</span> {{ discussion.created_on }}</p></small>
+  <hr>
+  <p>{{ discussion.discussion }}</p>
+  <a href="{% url 'research:replies_to_discussions' discussion.id %}">
+    <button type="button" class="offset-md-11 btn btn-outline-primary btn-sm">
+    Comments</button></a>
+</div>
+<br>
+{% endfor %}
+{% endblock %}

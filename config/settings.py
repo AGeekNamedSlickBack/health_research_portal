@@ -71,7 +71,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'hrp.researches',
-    'hrp.reviews',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -166,3 +165,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+TIME_ZONE = "Africa/Nairobi"

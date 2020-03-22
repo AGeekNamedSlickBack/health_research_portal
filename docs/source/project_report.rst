@@ -136,6 +136,18 @@ information. NaturalLanguage Processing is a subfield of linguistics, computer s
 and artificial intelligence concerned with the interactions between computers and human languages, in 
 particular how to program computers to process and analyze large amounts of natural language data.
 
+HOW TO CATEGORIZE DISEASES.
+
+Health Research Portal users have the ability to recommend and give review comment(s) on the relevance and
+usability of a research paper. Most exert research reviewers usually have checklists that they review a 
+papaer with. This same idea is used in the system to provide a scientific checklists for user to mark 
+after recommending a research paper. The checklist used is adapted from Academic Medicine (2001). The paper
+provides an extensive list of items to look at based on the research paper topics such as: Problem statement,
+conceptual framework and research questions, references to the literature and documantation, relevance,
+research design, instrumentation, data collection and quality control, population and sample, data analysis
+and statistics, reporting of statistical analyses, presentation of results, discussion and conclusion,
+title, authors and abstract, presnetation and documentation and scientific conduct.
+
 SIMILAR WORK DONE BEFORE
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Some similar work done before include:
@@ -257,3 +269,8 @@ System design for the project has been represented using **Data Flow Diagrams**.
     :figclass: align-left
 
     *Automated Health Research Portal database ERD*
+
+
+References
+==========
+https://journals.lww.com/academicmedicine/Fulltext/2001/09000/APPENDIX_1__CHECKLIST_OF_REVIEW_CRITERIA.37.aspx

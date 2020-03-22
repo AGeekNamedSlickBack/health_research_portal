@@ -2,15 +2,16 @@
 {% load static %}
 
 {% block breadcrumbs %}
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
-  </ol>
-</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-10">Welcome to Health Research Portal</h1>
+    <p class="lead">Where health researches have been found and intelligently categorized for you
+    to help you utilize them better and interact with other health experts on relevant matters.</p>
+  </div>
+</div>
 {% endblock%}
 
 {% block research %}
-<h3>Research list</h3>
 <br>
 <button type="button" class="collapsible">C</button>
 <div class="content">
