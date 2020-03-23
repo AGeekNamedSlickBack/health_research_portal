@@ -178,7 +178,7 @@ class CancerDiagnosisListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="cancer_diagnosis")
+        Research.objects.filter(keyword="cancer:diagnosis")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -191,7 +191,7 @@ class CancerTreatmentListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="cancer_treatment")
+        Research.objects.filter(keyword="cancer:treatment")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -204,7 +204,7 @@ class CancerLocationListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="cancer_county")
+        Research.objects.filter(keyword="cancer:county")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -223,7 +223,7 @@ class MalariaDiagnosisListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="malaria_Plasmodium")
+        Research.objects.filter(keyword="malaria:Plasmodium")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -236,7 +236,7 @@ class MalariaTreatmentListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="malaria_treatment")
+        Research.objects.filter(keyword="malaria:treatment")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -249,7 +249,7 @@ class MalariaLocationListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="malaria_County")
+        Research.objects.filter(keyword="malaria:County")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
