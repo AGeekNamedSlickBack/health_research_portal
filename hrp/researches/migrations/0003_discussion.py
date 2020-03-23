@@ -9,21 +9,40 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0002_auto_20200313_0935'),
+        ("researches", "0002_auto_20200313_0935"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Discussion',
+            name="Discussion",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('discussion', models.TextField()),
-                ('created_by', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('research', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='discussions', to='researches.Research')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("discussion", models.TextField()),
+                (
+                    "created_by",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "research",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="discussions",
+                        to="researches.Research",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['created_on'],
-            },
+            options={"ordering": ["created_on"],},
         ),
     ]

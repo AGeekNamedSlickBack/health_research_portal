@@ -16,17 +16,39 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Research',
+            name="Research",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.CharField(max_length=250, unique=True)),
-                ('title', models.CharField(max_length=250)),
-                ('scraped_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('category', models.CharField(max_length=250)),
-                ('keyword', models.CharField(max_length=100)),
-                ('discussions', models.TextField(blank=True, null=True)),
-                ('discussion_date', models.DateTimeField(auto_now_add=True, verbose_name='Discussion date')),
-                ('created_by', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.CharField(max_length=250, unique=True)),
+                ("title", models.CharField(max_length=250)),
+                (
+                    "scraped_date",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("category", models.CharField(max_length=250)),
+                ("keyword", models.CharField(max_length=100)),
+                ("discussions", models.TextField(blank=True, null=True)),
+                (
+                    "discussion_date",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Discussion date"
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

@@ -9,18 +9,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0004_auto_20200313_1027'),
+        ("researches", "0004_auto_20200313_1027"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='discussion',
-            name='created_by',
-        ),
+        migrations.RemoveField(model_name="discussion", name="created_by",),
         migrations.AddField(
-            model_name='discussion',
-            name='created_by',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="discussion",
+            name="created_by",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
             preserve_default=False,
         ),
     ]

@@ -6,16 +6,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('researches', '0017_review_created_by'),
+        ("researches", "0017_review_created_by"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='discussionreply',
-            options={'ordering': ['-created_on'], 'verbose_name': 'DiscussionReplie'},
+            name="discussionreply",
+            options={
+                "ordering": ["-created_on"],
+                "verbose_name": "DiscussionReplie",
+            },
         ),
         migrations.AlterModelOptions(
-            name='recommends',
-            options={'verbose_name': 'Recommend'},
+            name="recommends", options={"verbose_name": "Recommend"},
         ),
     ]

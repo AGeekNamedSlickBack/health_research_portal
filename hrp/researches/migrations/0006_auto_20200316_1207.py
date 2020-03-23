@@ -9,25 +9,43 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0005_auto_20200313_1028'),
+        ("researches", "0005_auto_20200313_1028"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='discussion',
-            options={'ordering': ['-created_on']},
+            name="discussion", options={"ordering": ["-created_on"]},
         ),
         migrations.CreateModel(
-            name='DiscussionReply',
+            name="DiscussionReply",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('reply', models.TextField()),
-                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('discussion', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='replies', to='researches.Discussion')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("reply", models.TextField()),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "discussion",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="replies",
+                        to="researches.Discussion",
+                    ),
+                ),
             ],
-            options={
-                'ordering': ['-created_on'],
-            },
+            options={"ordering": ["-created_on"],},
         ),
     ]

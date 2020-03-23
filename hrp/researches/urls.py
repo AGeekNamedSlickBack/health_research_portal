@@ -23,6 +23,11 @@ urlpatterns = [
         name="recommends",
     ),
     path(
+        "my_recommends/",
+        views.ReccomendedReasearchListView.as_view(),
+        name="my_recommends",
+    ),
+    path(
         "<int:pk>/", views.ResearchDetailView.as_view(), name="research-detail"
     ),
     path(

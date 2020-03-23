@@ -9,14 +9,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0008_auto_20200317_0820'),
+        ("researches", "0008_auto_20200317_0820"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='research',
-            name='recommends',
-            field=models.ForeignKey(blank=True, default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="research",
+            name="recommends",
+            field=models.ForeignKey(
+                blank=True,
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
             preserve_default=False,
         ),
     ]
