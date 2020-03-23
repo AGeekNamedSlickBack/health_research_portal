@@ -105,13 +105,13 @@ def test_malaria_location_list_view():
     assert response.status_code == 200
 
 
-def test_research_search_view():
-    """Test the research list view."""
-    client = Client()
-    url = reverse("research:search")
-    response = client.get(url)
+# def test_research_search_view():
+#     """Test the research list view."""
+#     client = Client()
+#     url = reverse("research:search")
+#     response = client.get(url)
 
-    assert response.status_code == 200
+#     assert response.status_code == 200
 
 
 def test_signup_view():

@@ -33,6 +33,7 @@ urlpatterns = [
     path(
         "reviews/<int:pk>", views.ReviewCreateView.as_view(), name="reviews",
     ),
+    path("search/", views.Search.as_view(), name="search",),
     path(
         "cancer/diagnosis/",
         views.CancerDiagnosisListView.as_view(),
