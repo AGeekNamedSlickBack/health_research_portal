@@ -13,6 +13,11 @@ class Research(models.Model):
     category = models.CharField(max_length=250)
     keyword = models.CharField(max_length=100)
 
+    class Meta:
+        """Meta class."""
+
+        verbose_name = "Researche"
+
     def __str__(self):
         """Rep title into a human readable form."""
         return "{} - {} - {}".format(self.title, self.category, self.keyword)
@@ -52,7 +57,7 @@ class DiscussionReply(models.Model):
         """Meta class."""
 
         ordering = ["-created_on"]
-        verbose_name = "DiscussionReplie"
+        verbose_name = "Replie"
 
     def __str__(self):
         """Human readable form."""
