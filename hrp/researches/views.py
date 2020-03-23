@@ -15,6 +15,7 @@ from .filters import ResearchFilter
 from .models import Discussion, DiscussionReply, Recommends, Research, Review
 from .forms import ReviewForm
 from django.db.models import Count
+from django.db.models import Q
 
 
 class Index(TemplateView):
@@ -125,11 +126,30 @@ class ReccomendedReasearchListView(LoginRequiredMixin, ListView):
 
     template_name = "my_recommends.html"
     context_object_name = "recommended_research"
+    paginate_by = 10
 
     def get_queryset(self):
         """Filter by user."""
         return Research.objects.filter(
             researches__recommends=self.request.user
+        )
+
+
+class Search(ListView):
+    """Search view for spareparts."""
+
+    model = Research
+    template_name = "search.html"
+    context_object_name = "searches"
+    paginate_by = 10
+
+    def get_queryset(self):
+        """Get filtered queryset."""
+        query = self.request.GET.get("q")
+        return Research.objects.filter(
+            Q(title__icontains=query)
+            | Q(category__icontains=query)
+            | Q(keyword__icontains=query)
         )
 
 
