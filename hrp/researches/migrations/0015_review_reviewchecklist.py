@@ -6,22 +6,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('researches', '0014_auto_20200317_0912'),
+        ("researches", "0014_auto_20200317_0912"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ReviewChecklist',
+            name="ReviewChecklist",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('checklist', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("checklist", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('selected_checklist', models.ManyToManyField(to='researches.ReviewChecklist')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "selected_checklist",
+                    models.ManyToManyField(to="researches.ReviewChecklist"),
+                ),
             ],
         ),
     ]

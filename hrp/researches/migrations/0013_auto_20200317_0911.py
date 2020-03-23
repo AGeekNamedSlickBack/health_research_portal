@@ -8,17 +8,16 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0012_auto_20200317_0906'),
+        ("researches", "0012_auto_20200317_0906"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='recommends',
-            name='recommends',
-        ),
+        migrations.RemoveField(model_name="recommends", name="recommends",),
         migrations.AddField(
-            model_name='recommends',
-            name='recommends',
-            field=models.ManyToManyField(blank=True, null=True, to=settings.AUTH_USER_MODEL),
+            model_name="recommends",
+            name="recommends",
+            field=models.ManyToManyField(
+                blank=True, null=True, to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

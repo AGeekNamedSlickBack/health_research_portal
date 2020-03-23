@@ -120,6 +120,19 @@ class RecommendsRedirectView(LoginRequiredMixin, RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
+class ReccomendedReasearchListView(LoginRequiredMixin, ListView):
+    """Get a list of all recommended researches."""
+
+    template_name = "my_recommends.html"
+    context_object_name = "recommended_research"
+
+    def get_queryset(self):
+        """Filter by user."""
+        return Research.objects.filter(
+            researches__recommends=self.request.user
+        )
+
+
 class ResearchDetailView(DetailView):
     """Add detail views for the researches."""
 

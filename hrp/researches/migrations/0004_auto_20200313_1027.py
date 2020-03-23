@@ -8,17 +8,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0003_discussion'),
+        ("researches", "0003_discussion"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='discussion',
-            name='created_by',
-        ),
+        migrations.RemoveField(model_name="discussion", name="created_by",),
         migrations.AddField(
-            model_name='discussion',
-            name='created_by',
+            model_name="discussion",
+            name="created_by",
             field=models.ManyToManyField(to=settings.AUTH_USER_MODEL),
         ),
     ]

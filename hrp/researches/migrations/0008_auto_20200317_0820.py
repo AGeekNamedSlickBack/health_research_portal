@@ -9,16 +9,19 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('researches', '0007_recommends'),
+        ("researches", "0007_recommends"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='research',
-            name='recommends',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="research",
+            name="recommends",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
-        migrations.DeleteModel(
-            name='Recommends',
-        ),
+        migrations.DeleteModel(name="Recommends",),
     ]
