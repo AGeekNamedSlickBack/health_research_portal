@@ -11,8 +11,7 @@
 </nav>
 {% endblock%}
 
-{% block research %}
-
+{% block jumbotron %}
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h3>Key facts about cancer</h3>
@@ -26,7 +25,9 @@
      </p>
   </div>
 </div>
+{% endblock jumbotron %}
 
+{% block research %}
 <ul class="list-group">
   <a href="{% url 'research:cancer_diagnosis' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
     Diagnosis
