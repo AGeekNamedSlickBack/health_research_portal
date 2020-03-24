@@ -1,21 +1,19 @@
 """Research views."""
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
+    DetailView,
     ListView,
     RedirectView,
     TemplateView,
-    DetailView,
 )
 
 from .filters import ResearchFilter
+from .forms import CustomUserCreationForm, ReviewForm
 from .models import Discussion, DiscussionReply, Recommends, Research, Review
-from .forms import ReviewForm
-from django.db.models import Count
-from django.db.models import Q
 
 
 class Index(TemplateView):
@@ -27,8 +25,8 @@ class Index(TemplateView):
 class SignUp(CreateView):
     """Sign up view for users."""
 
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login")
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("research:index")
     template_name = "registration/signup.html"
 
 
