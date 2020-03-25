@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item">Cholera</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3>Key facts about Cholera</h3>
+    <p class="lead"><small>
+      Cholera is an acute infection of the gut, caused by ingestion of food or water contaminated 
+      with the bacterium Vibrio cholerae O1 or O139. Infection can lead to profuse watery diarrhoea, 
+      which if untreated, can lead to rapid dehydration.</small>
+     </p>
+  </div>
+</div>
+{% endblock jumbotron %}
+
+{% block research %}
+<ul class="list-group">
+  <a href="{% url 'research:cholera_treatment' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+    Treatment
+    <!-- <span class="badge badge-primary badge-pill">2</span> -->
+  </li></a>
+</ul>
+{% endblock %}

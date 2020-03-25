@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 
 from hrp.common.util import KEYWORDS, URL_LIST
 from hrp.researches.models import Research
+from nltk.tokenize import word_tokenize
 
 
 def scraper():
@@ -36,17 +37,21 @@ def scraper():
             text = BeautifulSoup(html, "html.parser")
             text = text.get_text()
 
-            tokenized_text = [t for t in text.split()]
-
             # Remove stop words like 'a' 'the' 'an'
-            gotten_stopwords = stopwords.words("english")
-            clean_tokenized_text = tokenized_text[:]
+            stop_words = set(stopwords.words('english'))
+            word_tokens = word_tokenize(text)
 
-            for stopword in tokenized_text:
-                if stopword in gotten_stopwords:
-                    clean_tokenized_text.remove(stopword)
+            # Remove punctuations and lower upper cases
+            word_tokens = [word.lower() for word in word_tokens if word.isalpha()]
 
-            count_word_frequency = nltk.FreqDist(clean_tokenized_text)
+            filtered_text = [w for w in word_tokens if not w in stop_words]
+            filtered_text = []
+
+            for w in word_tokens:
+                if w not in stop_words:
+                    filtered_text.append(w)
+
+            count_word_frequency = nltk.FreqDist(filtered_text)
             count_word_frequency = count_word_frequency.most_common(
                 20
             )  # Gets most frequent words

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item">Diabetes Mellitus</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3>Key facts about Diabetes</h3>
+    <p class="lead"><small>
+      Diabetes of all types can lead to complications in many parts of the body and 
+      increase the risk of dying prematurely. In 2012 diabetes was the direct cause
+       of 1.5 million deaths globally. A large proportion of diabetes and its complications 
+       can be prevented by a healthy diet, regular physical activity, maintaining a normal body 
+       weight and avoiding tobacco use.</small>
+     </p>
+  </div>
+</div>
+{% endblock jumbotron %}
+
+{% block research %}
+<ul class="list-group">
+<a href="{% url 'research:diabetes_diagnosis' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+    Diagnosis
+  </li></a>
+  <a href="{% url 'research:diabetes_treatment' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+    Treatment
+  </li></a>
+</ul>
+{% endblock %}
