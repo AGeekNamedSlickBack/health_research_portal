@@ -1,21 +1,20 @@
 """Create the web scraper."""
-import urllib.request
-
 import nltk
+import requests
 from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 from hrp.common.util import KEYWORDS, URL_LIST
 from hrp.researches.models import Research
-from nltk.tokenize import word_tokenize
 
 
 def scraper():
     """Scrape certified repositories."""
     category_list = []
     for URL in URL_LIST:
-        page = urllib.request.urlopen(URL)
-        soup = BeautifulSoup(page, "html.parser")
+        page = requests.get(URL)
+        soup = BeautifulSoup(page.content, "html.parser")
 
         results = soup.find(id="main-container")
         researches = results.find_all(class_="col-sm-9 artifact-description")
@@ -32,17 +31,18 @@ def scraper():
             title = research.find("h4").text
 
             #  Get the keywords
-            response = urllib.request.urlopen(url)
-            html = response.read()
-            text = BeautifulSoup(html, "html.parser")
+            response = requests.get(url)
+            text = BeautifulSoup(response.content, "html.parser")
             text = text.get_text()
 
             # Remove stop words like 'a' 'the' 'an'
-            stop_words = set(stopwords.words('english'))
+            stop_words = set(stopwords.words("english"))
             word_tokens = word_tokenize(text)
 
             # Remove punctuations and lower upper cases
-            word_tokens = [word.lower() for word in word_tokens if word.isalpha()]
+            word_tokens = [
+                word.lower() for word in word_tokens if word.isalpha()
+            ]
 
             filtered_text = [w for w in word_tokens if not w in stop_words]
             filtered_text = []
