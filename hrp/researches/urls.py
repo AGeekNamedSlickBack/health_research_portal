@@ -6,7 +6,7 @@ from . import views
 app_name = "researches"
 urlpatterns = [
     path("", views.Index.as_view(), name="index",),
-    path("cancer/", views.CancerTemplateView.as_view(), name="cancer",),
+    path("signup/", views.SignUp.as_view(), name="signup"),
     path(
         "discussions/<int:pk>",
         views.DiscussionCreateView.as_view(),
@@ -34,6 +34,7 @@ urlpatterns = [
         "reviews/<int:pk>", views.ReviewCreateView.as_view(), name="reviews",
     ),
     path("search/", views.Search.as_view(), name="search",),
+    path("cancer/", views.CancerTemplateView.as_view(), name="cancer",),
     path(
         "cancer/diagnosis/",
         views.CancerDiagnosisListView.as_view(),
@@ -65,6 +66,67 @@ urlpatterns = [
         views.MalariaLocationListView.as_view(),
         name="malaria_location",
     ),
-    path("signup/", views.SignUp.as_view(), name="signup"),
-    path("search/", views.research_search, name="search"),
+    path("cholera/", views.CholeraTemplateView.as_view(), name="cholera",),
+    path(
+        "cholera/treatment/",
+        views.CholeraTreatmentListView.as_view(),
+        name="cholera_treatment",
+    ),
+    path("typhoid/", views.TyphoidTemplateView.as_view(), name="typhoid",),
+    path(
+        "typhoid/treatment/",
+        views.TyphoidTreatmentListView.as_view(),
+        name="typhoid_treatment",
+    ),
+    path(
+        "typhoid/location/",
+        views.TyphoidLocationListView.as_view(),
+        name="typhoid_location",
+    ),
+    path("TB/", views.TBTemplateView.as_view(), name="TB",),
+    path(
+        "TB/treatment/",
+        views.TBTreatmentListView.as_view(),
+        name="TB_treatment",
+    ),
+    path("measles/", views.MeaslesTemplateView.as_view(), name="measles",),
+    path(
+        "measles/location/",
+        views.MeaslesLocationListView.as_view(),
+        name="measles_location",
+    ),
+    path("diabetes/", views.DiabetesTemplateView.as_view(), name="diabetes",),
+    path(
+        "diabetes/diagnosis/",
+        views.DiabetesDiagnosisListView.as_view(),
+        name="diabetes_diagnosis",
+    ),
+    path(
+        "diabetes/treatment/",
+        views.DiabetesTreatmentListView.as_view(),
+        name="diabetes_treatment",
+    ),
+    path(
+        "pneumonia/", views.PneumoniaTemplateView.as_view(), name="pneumonia",
+    ),
+    path(
+        "pneumonia/diagnosis/",
+        views.PneumoniaDiagnosisListView.as_view(),
+        name="pneumonia_diagnosis",
+    ),
+    path(
+        "malnutrition/",
+        views.MalnutritionTemplateView.as_view(),
+        name="malnutrition",
+    ),
+    path(
+        "malnutrition/treatment/",
+        views.MalnutritionTreatmentListView.as_view(),
+        name="malnutrition_treatment",
+    ),
+    path(
+        "malnutrition/location/",
+        views.MalnutritionLocationListView.as_view(),
+        name="malnutrition_location",
+    ),
 ]

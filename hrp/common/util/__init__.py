@@ -1,15 +1,10 @@
 """Common utilities."""
 
 KEYWORDS = [
-    ["Plasmodium"],
     ["plasmodium"],
-    ["Diagnosis"],
     ["diagnosis"],
-    ["Treatment"],
     ["treatment"],
-    ["Location"],
     ["location"],
-    ["County"],
     ["county"],
 ]  # Get better key words
 
@@ -19,4 +14,10 @@ URL_LIST = [
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=typhoid&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=pneumonia&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=diabetes&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=cholera&submit=&rpp=40&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=tuberculosis&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=measles&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=diabetes+mellitus&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=malnutrition&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=asthma&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
 ]

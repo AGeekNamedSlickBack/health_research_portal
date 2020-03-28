@@ -1,7 +1,7 @@
 """Research views."""
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -11,7 +11,6 @@ from django.views.generic import (
     TemplateView,
 )
 
-from .filters import ResearchFilter
 from .forms import CustomUserCreationForm, ReviewForm
 from .models import Discussion, DiscussionReply, Recommends, Research, Review
 
@@ -253,10 +252,14 @@ class MalariaTemplateView(TemplateView):
 class MalariaDiagnosisListView(ListView):
     """List view of researches."""
 
-    queryset = (
-        Research.objects.filter(keyword="malaria:Plasmodium")
-        .annotate(research_count=Count("researches__recommends"))
-        .order_by("-research_count")
+    queryset = Research.objects.filter(keyword="malaria:plasmodium").annotate(
+        research_count=Count("researches__recommends")
+    ).order_by("-research_count") | Research.objects.filter(
+        keyword="malaria:diagnosis"
+    ).annotate(
+        research_count=Count("researches__recommends")
+    ).order_by(
+        "-research_count"
     )
     context_object_name = "malaria_diagnosis"
     template_name = "researches/malaria_diagnosis.html"
@@ -280,7 +283,7 @@ class MalariaLocationListView(ListView):
     """List view of researches."""
 
     queryset = (
-        Research.objects.filter(keyword="malaria:County")
+        Research.objects.filter(keyword="malaria:county")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
@@ -289,7 +292,173 @@ class MalariaLocationListView(ListView):
     paginate_by = 10
 
 
-def research_search(request):
-    """Filter view."""
-    f = ResearchFilter(request.GET, queryset=Research.objects.all())
-    return render(request, "researches/search.html", {"filter": f})
+class CholeraTemplateView(TemplateView):
+    """Cholera page template view."""
+
+    template_name = "researches/cholera.html"
+
+
+class CholeraTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="cholera:treatment")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "cholera_treatment"
+    template_name = "researches/cholera_treatment.html"
+    paginate_by = 10
+
+
+class TyphoidTemplateView(TemplateView):
+    """Typhoid page template view."""
+
+    template_name = "researches/typhoid.html"
+
+
+class TyphoidTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="typhoid:treatment")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "typhoid_treatment"
+    template_name = "researches/typhoid_treatment.html"
+    paginate_by = 10
+
+
+class TyphoidLocationListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="typhoid:county")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "typhoid_location"
+    template_name = "researches/typhoid_location.html"
+    paginate_by = 10
+
+
+class TBTemplateView(TemplateView):
+    """TB page template view."""
+
+    template_name = "researches/TB.html"
+
+
+class TBTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="tuberculosis:treatment")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "TB_treatment"
+    template_name = "researches/TB_treatment.html"
+    paginate_by = 10
+
+
+class MeaslesTemplateView(TemplateView):
+    """Measles page template view."""
+
+    template_name = "researches/measles.html"
+
+
+class MeaslesLocationListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="measles:county")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "measles_location"
+    template_name = "researches/measles_location.html"
+    paginate_by = 10
+
+
+class DiabetesTemplateView(TemplateView):
+    """Diabetes page template view."""
+
+    template_name = "researches/diabetes.html"
+
+
+class DiabetesDiagnosisListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="diabetes+mellitus:diagnosis")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "diabetes_diagnosis"
+    template_name = "researches/diabetes_diagnosis.html"
+    paginate_by = 10
+
+
+class DiabetesTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="diabetes+mellitus:treatment")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "diabetes_treatment"
+    template_name = "researches/diabetes_treatment.html"
+    paginate_by = 10
+
+
+class PneumoniaTemplateView(TemplateView):
+    """Pneumonia page template view."""
+
+    template_name = "researches/pneumonia.html"
+
+
+class PneumoniaDiagnosisListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="pneumonia:diagnosis")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "pneumonia_diagnosis"
+    template_name = "researches/pneumonia_diagnosis.html"
+    paginate_by = 10
+
+
+class MalnutritionTemplateView(TemplateView):
+    """Malnutrition page template view."""
+
+    template_name = "researches/malnutrition.html"
+
+
+class MalnutritionTreatmentListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="malnutrition:treatment")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "malnutrition_treatment"
+    template_name = "researches/malnutrition_treatment.html"
+    paginate_by = 10
+
+
+class MalnutritionLocationListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="malnutrition:county")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    context_object_name = "malnutrition_location"
+    template_name = "researches/malnutrition_location.html"
+    paginate_by = 10

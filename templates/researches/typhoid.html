@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item">Typhoid</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3>Key facts about Typhoid</h3>
+    <p class="lead"><small>
+      Typhoid fever is a life-threatening infection caused by the bacterium Salmonella Typhi. 
+      It is usually spread through contaminated food or water. An estimated 11–20 million people 
+      get sick from typhoid and between 128 000 and 161 000 people die from it every year.</small>
+     </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block research %}
+<ul class="list-group">
+  <a href="{% url 'research:typhoid_treatment' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+    Treatment
+    <!-- <span class="badge badge-primary badge-pill">2</span> -->
+  </li></a>
+  <a href="{% url 'research:typhoid_location' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
+    Location-based
+    <!-- <span class="badge badge-primary badge-pill">1</span> -->
+  </li></a>
+</ul>
+{% endblock %}
