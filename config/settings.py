@@ -57,8 +57,8 @@ def get_bool_env(env_var, default=False):
 DEBUG = get_bool_env("DEBUG", False)
 
 ALLOWED_HOSTS = [
-    '127.0.0.1:8000',
-    'localhost:8000',
+    '127.0.0.1',
+    'localhost',
     'hrp.duckdns.org'
 ]
 
