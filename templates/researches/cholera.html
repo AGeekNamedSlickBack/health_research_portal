@@ -28,7 +28,7 @@
 <ul class="list-group">
   <a href="{% url 'research:cholera_treatment' %}"><li class="list-group-item d-flex justify-content-between align-items-center">
     Treatment
-    <!-- <span class="badge badge-primary badge-pill">2</span> -->
+    <span class="badge badge-primary badge-pill">{{ treatment_count}}</span>
   </li></a>
 </ul>
 {% endblock %}

@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Health Research portal'
+project = 'Automated Health Research portal'
 copyright = '2020, Kenneth Mathenge'
 author = 'Kenneth Mathenge'
 
@@ -50,3 +50,6 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+latex_elements = {
+  'extraclassoptions': 'openany,oneside'
+}
