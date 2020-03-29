@@ -20,11 +20,15 @@
     <hr>
     <br>
     <p class="card-text text-muted">This research has been sourced from: <a href="{{ object.url }}" target="_blank">{{ object.url }}</a></p>
+    <hr>
     <p class="card-text text-muted"><strong> Scraped Date:</strong> {{ object.scraped_date|date }}</p>
+    <hr>
     <p class="card-text text-muted"><strong>Research Keyword:</strong>  {{ object.keyword }}</p>
+    <hr>
     <a href="{% url 'research:discussions' object.id %}">
         <button type="button" class="btn btn-outline-primary btn-sm">
         Discussions ({{ object.discussions.count }})</button></a>
+    <hr>
     <blockquote class="blockquote mb-0">
         <br>
     <footer class="blockquote-footer">Scraped by <cite title="Source Title">Health Research Portal</cite></footer>

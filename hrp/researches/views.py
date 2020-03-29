@@ -203,6 +203,20 @@ class CancerTemplateView(TemplateView):
 
     template_name = "researches/cancer.html"
 
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="cancer:diagnosis"
+        ).count()
+        context["treatment_count"] = Research.objects.filter(
+            keyword="cancer:treatment"
+        ).count()
+        context["location_count"] = Research.objects.filter(
+            keyword="cancer:county"
+        ).count()
+        return context
+
 
 class CancerDiagnosisListView(ListView):
     """List view of researches."""
@@ -247,6 +261,20 @@ class MalariaTemplateView(TemplateView):
     """Malaria page template view."""
 
     template_name = "researches/malaria.html"
+
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="malaria:plasmodium"
+        ).count()  # Bug here
+        context["treatment_count"] = Research.objects.filter(
+            keyword="malaria:treatment"
+        ).count()
+        context["location_count"] = Research.objects.filter(
+            keyword="malaria:county"
+        ).count()
+        return context
 
 
 class MalariaDiagnosisListView(ListView):
@@ -296,6 +324,14 @@ class CholeraTemplateView(TemplateView):
     """Cholera page template view."""
 
     template_name = "researches/cholera.html"
+
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["treatment_count"] = Research.objects.filter(
+            keyword="cholera:treatment"
+        ).count()
+        return context
 
 
 class CholeraTreatmentListView(ListView):
@@ -348,6 +384,14 @@ class TBTemplateView(TemplateView):
 
     template_name = "researches/TB.html"
 
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["treatment_count"] = Research.objects.filter(
+            keyword="typhoid:treatment"
+        ).count()
+        return context
+
 
 class TBTreatmentListView(ListView):
     """List view of researches."""
@@ -367,6 +411,14 @@ class MeaslesTemplateView(TemplateView):
 
     template_name = "researches/measles.html"
 
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["location_count"] = Research.objects.filter(
+            keyword="measles:county"
+        ).count()
+        return context
+
 
 class MeaslesLocationListView(ListView):
     """List view of researches."""
@@ -385,6 +437,17 @@ class DiabetesTemplateView(TemplateView):
     """Diabetes page template view."""
 
     template_name = "researches/diabetes.html"
+
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="diabetes+mellitus:diagnosis"
+        ).count()
+        context["treatment_count"] = Research.objects.filter(
+            keyword="diabetes+mellitus:treatment"
+        ).count()
+        return context
 
 
 class DiabetesDiagnosisListView(ListView):
@@ -418,6 +481,14 @@ class PneumoniaTemplateView(TemplateView):
 
     template_name = "researches/pneumonia.html"
 
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="pneumonia:diagnosis"
+        ).count()
+        return context
+
 
 class PneumoniaDiagnosisListView(ListView):
     """List view of researches."""
@@ -436,6 +507,17 @@ class MalnutritionTemplateView(TemplateView):
     """Malnutrition page template view."""
 
     template_name = "researches/malnutrition.html"
+
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["treatment_count"] = Research.objects.filter(
+            keyword="malnutrition:treatment"
+        ).count()
+        context["location_count"] = Research.objects.filter(
+            keyword="malnutrition:county"
+        ).count()
+        return context
 
 
 class MalnutritionTreatmentListView(ListView):
