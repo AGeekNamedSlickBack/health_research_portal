@@ -190,7 +190,7 @@ METRICS OF REVIEWING HEALTH RESEARCHES
 Health Research Portal users have the ability to recommend and give review comment(s) on the relevance and
 usability of a research paper. Most exert research reviewers usually have checklists that they review a 
 papaer with. This same idea is used in the system to provide a scientific checklists for user to mark 
-after recommending a research paper. The checklist used is adapted from Academic Medicine (2001). The paper
+after recommending a research paper. The checklist used is adapted from Academic Medicine (APPENDIX 1, 2001). The paper
 provides an extensive list of items to look at based on the research paper topics such as: Problem statement,
 conceptual framework and research questions, references to the literature and documantation, relevance,
 research design, instrumentation, data collection and quality control, population and sample, data analysis
@@ -274,46 +274,42 @@ are being solved by the project which are:
 
 ANALYSIS OF COLLECTED DATA
 ***************************
-The information collect has been analysed and interpreted resulting to the following use cases:
+The information collect has been analysed and interpreted resulting to the following use case diagram:
 
 **Usecase to get researches from erepositories**
 
-.. image:: images/Usecase1.png
+.. image:: images/usecase-diagram.png
    :alt: Usecase diagram
-   :width: 300
 
-*First usecase*
+*Automated Health Research Portal Usecase Diagram*
 
-*Alistair Cockburn's Use Case Template*
+FUNCTIONAL REQUIREMENTS
+***********************
 
-+--------------------------------------------------------------------------------------+
-|USE CASE 1: GET RESEARCH INFORMATION                                                  |
-|                                                                                      |
-|A. CHARACTERISTIC INFORMATION                                                         |
-|                                                                                      |
-|       * **Goal in context:** User to get information from researches                 |
-|       * **Actors:** System, Doctors, Researchers, Policy makers, Students            |
-|       * **Scope:** Research done on Health.                                          |
-|       * **Success condition:** User quickly gets useful research and reviews it      |
-|                                                                                      |
-|B. MAIN SUCCESS SCENARIO                                                              |
-|                                                                                      |
-|        #) User needs information from done researches                                |
-|        #) User log-in the system and searches (e.g Malaria)                          |
-|        #) System lists researches mined on malaria in well identified categories     |
-|        #) User identifies a category and gets relevant research                      |
-|        #) User then uses the obtained research                                       |
-|        #) User reviews it (positively or negatively)                                 |
-|                                                                                      |
-|D. VARIATIONS                                                                         |
-|                                                                                      |
-|       #) User does not leave a review on a research                                  |
-|                                                                                      |
-|C. RELATED INFORMATION                                                                |
-|                                                                                      |
-|        #) * **Channel to actor:** Phone and Desktop                                  |
-|        #) * **Priotiry:** Top                                                        |
-+--------------------------------------------------------------------------------------+
+Functional requirements of the system include:
+
+#) Scrape resarches form erepositories and organise them in categories based on ICD-10 classification
+#) Allow users to discuss on scraped researches
+#) Allow users to comment on other user's Discussions
+#) Allow users to recommend and "unrecommend" a research
+#) Order the scraped researches according to the number of recommends they get
+#) User management
+      - Registering new users
+      - Password management
+      - Sorting out researches recommended by a user
+#) Search functionality to easily find a research
+
+NON-FUNCTIONAL REQUIREMENTS
+****************************
+
+The system also provides non functional requirements such as:
+
+#) Security
+#) Reliability
+#) Availability
+#) Maintainability
+#) Scalability
+#) usability
 
 
 FUNCTIONAL REQUIREMENTS
@@ -410,13 +406,6 @@ The system output are:
 
 PHYSICAL DESIGN
 ***************
-
-
-**USECASE DIAGRAMS**
-
-
-**PROCESSORS**
-
 
 IMPLEMENTATION
 ==============
@@ -787,8 +776,21 @@ system requires.
 REFERENCES
 ==========
 
-#) https://journals.lww.com/academicmedicine/Fulltext/2001/09000/APPENDIX_1__CHECKLIST_OF_REVIEW_CRITERIA.37.aspx
-#) Digital repos - https://www.sciencedirect.com/topics/computer-science/digital-repository
-#) IRs - https://www.researchgate.net/publication/327187267_Green_open_access_in_Kenya_a_review_of_the_content_policies_and_usage_of_institutional_repositories
-#) ICD-10 - https://www.who.int/classifications/icd/en/
-#) postgres - https://medium.com/we-build-state-of-the-art-software-creating/why-should-i-use-postgresql-as-database-in-my-startup-company-96de2fd375a9
+#) Academic Medicine, 2001. APPENDIX 1. [online] 76(9), p.959. Available at: 
+   <https://journals.lww.com/academicmedicine/Fulltext/2001/09000/APPENDIX_1__CHECKLIST_OF_REVIEW_CRITERIA.37.aspx> 
+   [Accessed 27 January 2020].
+
+#) Xiew, I. and Matusiak, K., 2016. Digital Repository - An Overview | Sciencedirect Topics. [online] Sciencedirect.com. 
+   Available at: <https://www.sciencedirect.com/topics/computer-science/digital-repository> 
+   [Accessed 11 February 2020].
+
+#) Chilimo, W., 2015. Green Open Access In Kenya : A Review Of The Content, Policies And Usage Of Institutional Repositories. 
+   [online] ResearchGate. Available at: <https://www.researchgate.net/publication/327187267_Green_open_access_in_Kenya_a_review_of_the_content_policies_and_usage_of_institutional_repositories> 
+   [Accessed 19 February 2020].
+
+#) World Health Organization. 2018. International Classification Of Diseases, 11Th Revision (ICD-11). 
+   [online] Available at: <https://www.who.int/classifications/icd/en/> [Accessed 15 March 2020].
+
+#) Chiessi, L., 2018. Why Should I Use Postgresql As Database In My Startup/Company. [online] Medium. Available at: 
+   <https://medium.com/we-build-state-of-the-art-software-creating/why-should-i-use-postgresql-as-database-in-my-startup-company-96de2fd375a9> 
+   [Accessed 13 April 2020].
