@@ -131,9 +131,8 @@ LITERATURE REVIEW
 The literature review is presented in serveral subsections namely: the concept of digital preservation and 
 institutional repositories; concepts and keywords used in disease categorization and metrics of reviewing health researches.
 
-The concept of digital preservation and institutional repositories
+THE CONCEPT OF DIGITAL PRESERVATION AND INSTITUTIONAL REPOSITORIES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Over the recent years the world has seen an increase in Digital Preservation. Digital preservation refers 
 to the overall approach to preserving information and appraisal of digital information over its entire 
 life cycle. There has been a growing awareness of the importance of digital preservation that has led 
@@ -166,8 +165,8 @@ information. NaturalLanguage Processing is a subfield of linguistics, computer s
 and artificial intelligence concerned with the interactions between computers and human languages, in 
 particular how to program computers to process and analyze large amounts of natural language data.
 
-Concepts and keywords used in dieseases categorization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CONCEPTS AND KEYWORDS USED IN DISEASES CATEGORIZATION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Researches have been categorized based on the diseases they address. These categories follow ICD-10 guidelines.
 ICD is the foundation for the identification of health trends and statistics globally, and the international 
 standard for reporting diseases and health conditions. It is the diagnostic classification standard for all 
@@ -186,9 +185,8 @@ Member States to prepare for implementation, including translating ICD into thei
 submitted to the 144th Executive Board Meeting in January 2019 and the Seventy-second World Health Assembly in May 2019 
 and, following endorsement, Member States will start reporting using ICD-11 on 1 January 2022. 
 
-Metrics of reviewing health researches
+METRICS OF REVIEWING HEALTH RESEARCHES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Health Research Portal users have the ability to recommend and give review comment(s) on the relevance and
 usability of a research paper. Most exert research reviewers usually have checklists that they review a 
 papaer with. This same idea is used in the system to provide a scientific checklists for user to mark 
@@ -252,12 +250,39 @@ The proposed system aggregates the following concepts:
 METHODOLOGY
 ===========
 
-REQUIRMENTS ANALYSIS
-~~~~~~~~~~~~~~~~~~~~
-Requirements analysis involved the identification of potential system users, who include doctors,
-lecturers and students from the School of Medicine actively involved in doing research in the healthcare 
-field. There was **frequent communication** with the potential system users to determine the specific feature 
-expectations. Requirements were also elicited from several documantation on **Knowledge Translation**.
+SYSTEM ANALYSIS
+~~~~~~~~~~~~~~~
+
+COLLECTION OF DATA
+*******************
+Target users identified for this project include but not limited to: healthcare staff such as
+doectors and nureses, lectureres and students in healthcare related fields, researchers, 
+policy makers and other stakeholders. From the pool of target users, a small group of users 
+was identified which include needer groups and extreme users. Requirements was solisited 
+from the groups through frequent communiactions and interviews. Complementing these sources 
+was the vast documentation published on the internet about Knowldege Translation.
+
+From the aforementioned sources, the requirements solicited helped identify the problems that 
+are being solved by the project which are:
+
+    * Ineffective continuing education for health professionals.
+    * Increasing complexity of medical procedures and treatments.
+    * Inadequate application of evidence to case management.
+    * Lack of adequate communication between researchers and policy makers.
+    * Physicians are faced with a rapid and voluminous accumulation of new findings, 
+      making it increasingly difficult to follow current knowledge and integrate it into practice.
+
+ANALYSIS OF COLLECTED DATA
+***************************
+The information collect has been analysed and interpreted resulting to the following use cases:
+
+**Usecase to get researches from erepositories**
+
+.. image:: images/Usecase1.png
+   :alt: Usecase diagram
+   :width: 300
+
+*First usecase*
 
 *Alistair Cockburn's Use Case Template*
 
@@ -290,41 +315,480 @@ expectations. Requirements were also elicited from several documantation on **Kn
 |        #) * **Priotiry:** Top                                                        |
 +--------------------------------------------------------------------------------------+
 
+
+FUNCTIONAL REQUIREMENTS
+***********************
+
+Functional requirements of the system include:
+
+#) Scrape resarches form erepositories and organise them in categories based on ICD-10 classification
+#) Allow users to discuss on scraped researches
+#) Allow users to comment on other user's Discussions
+#) Allow users to recommend and "unrecommend" a research
+#) Order the scraped researches according to the number of recommends they get
+#) User management
+      - Registering new users
+      - Password management
+      - Sorting out researches recommended by a user
+#) Search functionality to easily find a research
+
+NON-FUNCTIONAL REQUIREMENTS
+****************************
+
+The system also provides non functional requirements such as:
+
+#) Security
+#) Reliability
+#) Availability
+#) Maintainability
+#) Scalability
+#) usability
+
 SYSTEM DESIGN
 ~~~~~~~~~~~~~
-System design for the project has been represented using **Data Flow Diagrams**.
 
-.. figure:: Level0DFD.png
-    :width: 200px
-    :align: center
-    :height: 200px
-    :alt: Level 0 DFD
-    :figclass: align-right
+ARCHITECTURAL DESIGN
+********************
 
-    *Automated Health Research Portal Level 0 DFD*
+The system uses a **client-server** architectural design. This design consists of two parties; 
+a server and multiple clients. The server provides services to multiple client components. 
+Clients request services from the server and the server provides relevant services to those clients. 
 
-.. figure:: Level1DFD.png
-    :width: 300px
-    :align: center
-    :height: 300px
-    :alt: Level 1 DFD
-    :figclass: align-left
+.. image:: images/client-server.jpeg
+  :alt: client-server architectural design
 
-    *Automated Health Research Portal Level 1 DFD*
+*The application is hosted by Google Cloud servers from where it is accessible by multiple clients.*
 
-.. figure:: dfd.png
-    :width: 300px
-    :align: center
-    :height: 300px
-    :alt: Level 1 DFD
-    :figclass: align-left
+LOGICAL DESIGN
+**************
 
-    *Automated Health Research Portal database ERD*
+The logical design of the system is the abstract representation of the data flows(procedures),
+inputs(sources), outputs(destinations) and data stores(database) of the system.
+
+Data flow diagrams and Entity-Relationship diagrams have been used to represent the systems logical design.
+
+E-R DIAGRAM
+***********
+
+.. image:: images/ERD.png
+   :alt: ERD
+
+*Automated Health Research Portal Entity Relationship Diagram*
+
+DATA FLOW DIAGRAMS
+******************
+
+.. image:: images/Context-level-DFD.png
+   :alt: Context-Level-Diagram
+
+*Automated Health Research Portal Context Level Diagram*
+
+.. image:: images/level-1-DFD.png
+   :alt: Level one context diagrams
+
+*Automated Health Research Portal Level one Data Flow Diagram*
+
+FLOWCHART
+*********
+
+.. image:: images/Flowchart.png
+   :alt: Flowchart
+
+*Automated Health Research Portal Flowchart*
+
+From the diagrams above, the system has the following inputs:
+
+   * Research from erepositories
+   * Discussions on a research
+   * Replies/comments to discussions
+   * Recommends by users
+
+The system output are:
+
+   * Research processed and categorized according to ICD-10 classifications and ordered according to their number of recommends
+   * Discussions and replies from the users
+
+PHYSICAL DESIGN
+***************
 
 
-References
+**USECASE DIAGRAMS**
+
+
+**PROCESSORS**
+
+
+IMPLEMENTATION
+==============
+
+DATABASE
+~~~~~~~~
+The system uses `PostgreSQL <https://www.postgresqltutorial.com/>`_ as it database. PostgreSQL is a powerful, open source object-relational database 
+system that uses and extends the SQL language combined with many features that safely store and scale the 
+most complicated data workloads. The move towards using PostgreSQL is that it supports many data types, it
+ensures data integrity, reliability and disaster recovery, concurrency and security among others.
+
+BACKEND
+~~~~~~~
+The backend has been implentnted using Python and Django. The use of Python language to build the system 
+has been motivated by the widespread use of Python in Machine Learning. One of the core module of this project
+is its **Natural Language Processing** module which has been purely written in Python using `NLTK <https://www.nltk.org/>`_ 
+(Natural Language Processing ToolKit). As for Django, it provides a modern framework for perfectionists with deadlines.
+
+The backend comprises of the folowing modules:
+
+Web scraper
+***********
+This module does the actual data-mining of researches from their source repositories. It uses `BeautifulSoup <https://www.crummy.com/software/BeautifulSoup/bs4/doc/>`_ 
+and `Requests <https://requests.readthedocs.io/en/master/>`_ Python libraries.
+
+**Code snippet:**
+
+.. code-block:: python
+
+   """Create the web scraper and NLP module."""
+   ...
+   import requests
+   from bs4 import BeautifulSoup
+   ...
+   from hrp.common.util import KEYWORDS, URL_LIST
+   from hrp.researches.models import Research
+
+   def scraper():
+      """Scrape certified repositories."""
+      category_list = []
+      for URL in URL_LIST:
+         page = requests.get(URL)
+         soup = BeautifulSoup(page.content, "html.parser")
+
+         results = soup.find(id="main-container")
+         researches = results.find_all(class_="col-sm-9 artifact-description")
+         
+         # Fetch the categories from the urls
+         category = URL.split("&")[1]
+         category_list.append(category)
+
+         for item in category_list:
+            category = item.split("=")[1]
+
+         for research in researches:
+            url = "http://erepository.uonbi.ac.ke" + research.find("a")["href"]
+            title = research.find("h4").text
+            ...
+
+Natural Language Processing
+***************************
+This module uses NLTK to process the researches. Once the researches are scraped, BeautifulSoup is used again
+to fetch these researches abstracts. Text is obtained from the abstract page and some preprocessing is done 
+to it as demonstrated in the code snippet below.
+
+**Code snippet:**
+
+.. code-block:: python
+
+   """Create the web scraper and NLP module."""
+   import nltk
+   ...
+   from nltk.corpus import stopwords
+   from nltk.tokenize import word_tokenize
+
+   from hrp.common.util import KEYWORDS, URL_LIST
+   from hrp.researches.models import Research
+
+   def scraper():
+      """Scrape certified repositories."""
+      category_list = []
+      for URL in URL_LIST:
+         ...
+
+         for research in researches:
+            url = "http://erepository.uonbi.ac.ke" + research.find("a")["href"]
+            title = research.find("h4").text
+
+            #  Convert the abstract page to text
+            response = requests.get(url)
+            text = BeautifulSoup(response.content, "html.parser")
+            text = text.get_text()
+
+            # Remove stop words like 'a' 'the' 'an'
+            stop_words = set(stopwords.words("english"))
+            word_tokens = word_tokenize(text)
+
+            # Remove punctuations (noise) and lower the upper cases
+            word_tokens = [
+                  word.lower() for word in word_tokens if word.isalpha()
+            ]
+
+            filtered_text = [w for w in word_tokens if not w in stop_words]
+            filtered_text = []
+
+            for w in word_tokens:
+                  if w not in stop_words:
+                     filtered_text.append(w)
+
+            # Count the most frequent words in the preprocessed text
+            count_word_frequency = nltk.FreqDist(filtered_text)
+            count_word_frequency = count_word_frequency.most_common(
+                  20
+            )  # Gets most frequent 20 words
+
+            # Parse the most frequent words to get the key words (specified in __init__.py)
+            get_keywords = [
+                  [j for j in i if type(j) == str] for i in count_word_frequency
+            ]  # Gets keywords as a list
+
+            # Compares keywords gotten above with most_common words and find an intersect
+            try:
+                  keyword = [
+                     _keyword
+                     for _keyword in KEYWORDS
+                     if _keyword in get_keywords
+                  ]
+                  keyword = ",".join(keyword[0])  # Gets the intersect
+                  keyword = "{}:{}".format(category, keyword)
+
+            except IndexError:
+                  continue
+
+            ...
+
+After successfully scraping and processing the a research, it then proceeds to be added in our database
+
+**Code snippet:**
+
+.. code-block:: python
+
+   ...
+   try:
+      Research.objects.create(
+         url=url, title=title, category=category, keyword=keyword
+      )
+      print(
+         "{} - {} successfully added in category {} - {}".format(
+            title, url, category, keyword
+         )
+      )
+   except:
+         print("Research already scraped")
+
+Review
+******
+Research stored in the database are consequently displayed to the user who after crtitcally going
+through the research can initiate a discussion on it with other users in the system. Discussions recursively
+has comments, that is other users can start a nested discussion based on another user's discussion. Discussions
+and replies are stored in the following models:
+
+**Discussions:**
+
+.. code-block:: python
+
+   class Discussion(models.Model):
+      """Create discussions for a research."""
+
+      research = models.ForeignKey(
+         Research, on_delete=models.CASCADE, related_name="discussions"
+      )
+      created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+      created_on = models.DateTimeField(auto_now_add=True)
+      discussion = models.TextField()
+
+**Replies to discussions:**
+
+.. code-block:: python
+
+   class DiscussionReply(models.Model):
+      """User can reply to a discussion."""
+
+      discussion = models.ForeignKey(
+         Discussion, on_delete=models.CASCADE, related_name="replies"
+      )
+      created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+      created_on = models.DateTimeField(auto_now_add=True)
+      reply = models.TextField()
+
+Recommends
+**********
+When a user deems a scraped research useful and practical, they are provided with an option to 
+``Recommend`` the research to other users. Recommend/"Unrecommend" works similarily to "likes/unlikes" in social media
+platforms with the research with the most recommneds sorted out to appear the first in the list.
+
+**Recommends code snippet:**
+
+.. code-block:: python
+
+   class Recommends(models.Model):
+      """A research is ranked on its number of recommends."""
+
+      research = models.ForeignKey(
+         Research, on_delete=models.CASCADE, related_name="researches"
+      )
+      recommends = models.ManyToManyField(
+         User, blank=True, related_name="recommends"
+      )
+
+**Sorting out a research based on it's recommend count:**
+
+.. code-block:: python
+
+   ...
+   queryset = (
+        Research.objects.filter(keyword="cancer:diagnosis")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+   ...
+
+FRONTEND
+~~~~~~~~
+The frontend has been implemented using Javascript, HTML5 and CSS3. The project is not "front-end heavy" since all 
+the processing and logic is handled in the powerful backend. The front-end is pluggable, that is the three languages
+used can be switch with any other frontend language such as React with easy.
+
+CONSTRAINTS
+~~~~~~~~~~~
+The project has a data-mining module that has been implemented using a web scraper to find research form various
+repositories. However, the scraper has the following constratints:
+
+   #) The scraper requires access to scrape from an eRepository. This constraints to only fetching from the University of Nairobi's eRepository.
+   #) Too many scraping pings may result to the scraper being blocked out temporarily from accessing the researches.
+
+TESTING
+~~~~~~~
+The project has been fully tested using `Pytest Framework <https://pytest-django.readthedocs.io/en/latest/>`_ and 
+`Model Bakery <https://model-bakery.readthedocs.io/en/latest/>`_ which creates smart fixtures for testing 
+in Django. Other tools used include: `Flake8 <https://flake8.pycqa.org/en/latest/>`_ that checks if the 
+code base complies to set python standards and `Tox <https://tox.readthedocs.io/en/latest/>`_ which 
+automates the whole testing process. The system has been unit-tested and integration-tested with a 
+test coverage of 100%. The system is fully backed by Continuous Interation. It has been integrated with 
+`CircleCI <https://circleci.com/>`_ that automates testing before the project is pushed to its version 
+control repository in `Github <https://github.com/>`_ and its deployment to its staging server in 
+**Google Cloud Platform**.
+
+**Sample test fixture code snippets:**
+
+.. code-block:: python
+
+   """Test fixtures."""
+   import pytest
+   from django.test import Client
+   from model_bakery import baker
+
+   from hrp.researches.models import Research
+
+   pytestmark = pytest.mark.django_db
+
+   ...
+
+   @pytest.fixture
+   def research():
+      """Return a research."""
+      return baker.make(
+         Research,
+         url="http://url-ya-testing-tu.com",
+         title="Sample research title",
+         scraped_date="2020-1-19",
+         category="malaria",
+         keyword="malaria:plasmodium",
+      )
+
+**Sample test case:**
+
+.. code-block:: python
+
+   """Test research models."""
+   import pytest
+
+   pytestmark = pytest.mark.django_db
+
+
+   def test_research_model(research):
+      """Test research."""
+      assert research.url == "http://url-ya-testing-tu.com"
+      assert research.title == "Sample research title"
+      assert research.scraped_date == "2020-1-19"
+      assert research.category == "malaria"
+      assert research.keyword == "malaria:plasmodium"
+
+**Test output:**
+
+.. code-block:: bash
+
+   (venv) kentay@mathengekenneth:~/health_research_portal$ pytest tests/researches/test_model.py::test_research_model
+   ============================= test session starts ==============================
+   platform linux -- Python 3.6.8, pytest-5.3.2, py-1.8.1, pluggy-0.13.1
+   Django settings: config.settings (from ini file)
+   rootdir: /home/kentay/health_research_portal, inifile: tox.ini
+   plugins: cov-2.8.1, django-3.7.0, celery-4.4.2
+   collected 1 item                                                               
+
+   tests/researches/test_model.py .                                         [100%]
+
+   ======================== 1 passed in 13.31s =====================================
+
+**CircleCI Test output:**
+
+.. code-block:: bash
+
+   #!/bin/bash -eo pipefail
+   . venv/bin/activate
+   tox -r
+
+   ...
+   py3 run-test: commands[0] | flake8 hrp/ tests/ # Runs flake8
+   py3 run-test: commands[1] | coverage erase
+   py3 run-test: commands[2] | pytest --cov=hrp/ # Runs the tests and their coverage
+   ============================= test session starts ==============================
+   platform linux -- Python 3.6.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1
+   cachedir: .tox/py3/.pytest_cache
+   django: settings: config.settings (from ini)
+   rootdir: /home/circleci/repo, inifile: tox.ini
+   plugins: cov-2.8.1, django-3.9.0
+   collected 23 items                                                             
+
+   tests/researches/test_model.py ............                              [100%]
+   tests/researches/test_views.py ...........                               [100%]
+
+   ----------- coverage: platform linux, python 3.6.1-final-0 -----------
+   Name                         Stmts   Miss Branch BrPart  Cover   Missing
+   ------------------------------------------------------------------------
+   hrp/researches/__init__.py       0      0      0      0   100%
+   hrp/researches/filters.py        6      0      0      0   100%
+   hrp/researches/forms.py         17      0      0      0   100%
+   hrp/researches/models.py        50      0      0      0   100%
+   hrp/researches/urls.py           4      0      0      0   100%
+   hrp/researches/views.py        240     .0      4      0   100%
+   ------------------------------------------------------------------------
+   TOTAL                          317     .0      4      0   100%
+
+   ======================= 23 passed in 1.80s =============================
+   py3 run-test: commands[3] | coverage html
+   ___________________________________ summary ____________________________________
+   py3: commands succeeded
+   congratulations :)
+
+
+
+DEPLOYMENT
+~~~~~~~~~~
+The project has been deployed to a staging server in **Google Cloud Platform** for user testing and supervisors demo. Further
+considerations are being though of to eventually push the project into production to be used with real users. The project in 
+the staging server can be access by: https://hrp.duckdns.org.
+
+MAINTENANCE
+~~~~~~~~~~~
+
+The project has been written using **Robert C Martin** principles in his book **Clean Code** to make the process of debugging and
+maintaining the code easy. Bug are address using Python's `PDB <https://docs.python.org/3/library/pdb.html>`_ debugging tool. Each class and function has constructively 
+written docstrings to clearly explain what the code does. New features identified have a process put into place before they 
+are integrated with the main code. Github provides an issue tracker that keeps a backlog of bug and enhancements that the
+system requires.
+
+
+REFERENCES
 ==========
-https://journals.lww.com/academicmedicine/Fulltext/2001/09000/APPENDIX_1__CHECKLIST_OF_REVIEW_CRITERIA.37.aspx
-Digital repos - https://www.sciencedirect.com/topics/computer-science/digital-repository
-IRs - https://www.researchgate.net/publication/327187267_Green_open_access_in_Kenya_a_review_of_the_content_policies_and_usage_of_institutional_repositories
-ICD-10 - https://www.who.int/classifications/icd/en/
+
+#) https://journals.lww.com/academicmedicine/Fulltext/2001/09000/APPENDIX_1__CHECKLIST_OF_REVIEW_CRITERIA.37.aspx
+#) Digital repos - https://www.sciencedirect.com/topics/computer-science/digital-repository
+#) IRs - https://www.researchgate.net/publication/327187267_Green_open_access_in_Kenya_a_review_of_the_content_policies_and_usage_of_institutional_repositories
+#) ICD-10 - https://www.who.int/classifications/icd/en/
+#) postgres - https://medium.com/we-build-state-of-the-art-software-creating/why-should-i-use-postgresql-as-database-in-my-startup-company-96de2fd375a9
