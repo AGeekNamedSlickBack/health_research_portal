@@ -14,6 +14,10 @@ class CustomUserCreationForm(UserCreationForm):
 
         model = User
         fields = ("username", "email")
+        help_texts = {
+            "username": None,
+            "email": None,
+        }
 
 
 class CustomUserChangeForm(UserChangeForm):
