@@ -544,3 +544,9 @@ class MalnutritionLocationListView(ListView):
     context_object_name = "malnutrition_location"
     template_name = "researches/malnutrition_location.html"
     paginate_by = 10
+
+
+class Covid19TemplateView(TemplateView):
+    """Add custom covid-19 information."""
+
+    template_name = "covid-19.html"

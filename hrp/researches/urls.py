@@ -129,4 +129,9 @@ urlpatterns = [
         views.MalnutritionLocationListView.as_view(),
         name="malnutrition_location",
     ),
+    path(
+        "covid-19/information/",
+        views.Covid19TemplateView.as_view(),
+        name="covid-19",
+    ),
 ]
