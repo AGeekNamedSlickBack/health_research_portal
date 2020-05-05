@@ -138,7 +138,6 @@ class Search(ListView):
     model = Research
     template_name = "search.html"
     context_object_name = "searches"
-    paginate_by = 10
 
     def get_queryset(self):
         """Get filtered queryset."""
