@@ -6,14 +6,13 @@
   <div class="container">
     <h1 class="display-10">Welcome to Health Research Portal</h1>
     <p class="lead">Where health researches have been found and intelligently categorized for you
-    to help you utilize them better and interact with other health experts on relevant matters.</p>
+      to help you utilize them better and interact with other health experts on relevant matters.</p>
   </div>
 </div>
 {% endblock%}
 
 {% block research %}
-<br>
-<button type="button" class="collapsible">  CERTAIN INFECTIOUS AND PARASITIC DISEASES</button>
+<button type="button" class="collapsible"> CERTAIN INFECTIOUS AND PARASITIC DISEASES</button>
 <div class="content">
   <br>
   <ul>
@@ -59,19 +58,19 @@
 </div>
 <hr>
 <script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
-}
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
 </script>
 {% endblock %}

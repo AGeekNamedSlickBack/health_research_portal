@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 
-<body style="background-color: #F5F5F5;">
+<body style="background-color: #E8E8E8">
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -33,7 +33,7 @@
 
   <ul class="nav" style="background-color: white;">
     <li class="nav-item">
-      <a class="nav-link" href="https://www.covidvisualizer.com/" target="_blank">Get information on
+      <a class="nav-link" href="{% url 'research:covid-19' %}">Get information on
         <strong>COVID-19</strong></a>
     </li>
   </ul>
