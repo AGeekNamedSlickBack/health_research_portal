@@ -4,9 +4,14 @@
 {% block breadcrumbs %}
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-10">Welcome to Health Research Portal</h1>
-    <p class="lead">Where health researches have been found and intelligently categorized for you
-      to help you utilize them better and interact with other health experts on relevant matters.</p>
+    <h2>Health Research Portal</h2>
+    <hr>
+    <p class="lead text-muted">
+      <smaller>
+        Where health researches have been found and intelligently categorized for you
+        to help you utilize them better and interact with other health experts on relevant matters.
+      </smaller>
+    </p>
   </div>
 </div>
 {% endblock%}
@@ -15,23 +20,45 @@
 <button type="button" class="collapsible"> CERTAIN INFECTIOUS AND PARASITIC DISEASES</button>
 <div class="content">
   <br>
+  <p class="text-muted">
+    This chapter includes certain conditions caused by a pathogenic organism or microorganism,
+    such as a bacterium, virus, parasite, or fungus. These are diseases generally recognized as
+    communicable or transmissible.
+  </p>
   <ul>
-    {% comment %} <li><a href="{% url 'research:cholera' %}">Cholera</a></li>
-    <hr> {% endcomment %}
-    <li><a href="{% url 'research:malaria' %}">Malaria</a></li>
+    <p><strong>Intestinal infectious diseases</strong></p>
+    <li><a href="{% url 'research:cholera' %}">Cholera</a></li>
+    <li><a href="{% url 'research:typhoid' %}">Typhoid</a></li>
     <hr>
-    <li><a href="{% url 'research:measles' %}">Measles</a></li>
-    <hr>
+
+    <p><strong>Tuberculosis</strong></p>
     <li><a href="{% url 'research:TB' %}">TB</a></li>
     <hr>
-    <li><a href="{% url 'research:typhoid' %}">Typhoid</a></li>
+
+    <p><strong>Viral infections characterized by skin and mucous membrane lesions </strong></p>
+    <li><a href="{% url 'research:measles' %}">Measles</a></li>
+    <hr>
+
+    <p><strong>Human Immunodeficiency Virus [HIV] disease</strong></p>
+    <li><a href="">HIV</a></li>
+    <hr>
+
+    <p><strong>Protozoal diseases</strong></p>
+    <li><a href="{% url 'research:malaria' %}">Malaria</a></li>
+    <hr>
   </ul>
 </div>
 <hr>
 <button type="button" class="collapsible"> NEOPLASMS</button>
 <div class="content">
   <br>
+  <p class="text-muted">
+    This chapter contains codes for most benign and all malignant neoplasms. These
+    neoplasms can be considered benign, in-situ, malignant or of uncertain histologic
+    behaviour.
+  </p>
   <ul>
+    <p><strong>General category of Neoplasms</strong></p>
     <li><a href="{% url 'research:cancer' %}">Cancers</a></li>
     <hr>
   </ul>
@@ -40,19 +67,27 @@
 <button type="button" class="collapsible"> ENDOCRINE, NUTRITIONAL AND METABOLIC DISEASES</button>
 <div class="content">
   <br>
+  <p class="text-muted">This category includes endocrine diseases, nutritional diseases as well as metabolic diseases.
+  </p>
   <ul>
+    <p><strong>Diabetes Mellitus</strong></p>
     <li><a href="{% url 'research:diabetes' %}">Diabete Mellitus</a></li>
     <hr>
+    <p><strong>Malnutrition</strong></p>
     <li><a href="{% url 'research:malnutrition' %}">Malnutrition</a></li>
+    <hr>
   </ul>
 </div>
 <hr>
 <button type="button" class="collapsible"> DISEASES OF THE RESPIRATORY SYSTEM</button>
 <div class="content">
   <br>
+  <p class="text-muted">This category includes diseases that affect the respiratory system.
+  </p>
   <ul>
     {% comment %} <li><a href="{% url 'research:pneumonia' %}">Asthma</a></li>
     <hr> {% endcomment %}
+    <p><strong>Pneumonia</strong></p>
     <li><a href="{% url 'research:pneumonia' %}">Pneumonia</a></li>
   </ul>
 </div>

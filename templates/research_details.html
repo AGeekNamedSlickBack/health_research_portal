@@ -8,30 +8,32 @@
     <div class="row">
       <h4 class="col-md-10 card-title">{{ object.title }}</h4>
       {% if recommender in recommenders%}
-        <a href="{% url 'research:recommends' object.id %}">
-          <button type="button" class="btn btn-outline-primary btn-sm">
-          Unreccomend ({{ recommends_count }})</button></a>
+      <a href="{% url 'research:recommends' object.id %}">
+        <button type="button" class="btn btn-outline-danger btn-sm">
+          Unreccomend - ({{ recommends_count }})</button></a>
       {% else %}
-        <a href="{% url 'research:recommends' object.id %}">
-          <button type="button" class="btn btn-outline-primary btn-sm">
-          Reccomend ({{ recommends_count }})</button></a>
+      <a href="{% url 'research:recommends' object.id %}">
+        <button type="button" class="btn btn-outline-success btn-sm">
+          Reccomend - ({{ recommends_count }})</button></a>
       {% endif %}
     </div>
     <hr>
     <br>
-    <p class="card-text text-muted">This research has been sourced from: <a href="{{ object.url }}" target="_blank">{{ object.url }}</a></p>
+    <p class="card-text text-muted">This research has been sourced from: <a href="{{ object.url }}"
+        target="_blank">{{ object.url }}</a></p>
     <hr>
     <p class="card-text text-muted"><strong> Scraped Date:</strong> {{ object.scraped_date|date }}</p>
     <hr>
-    <p class="card-text text-muted"><strong>Research Keyword:</strong>  {{ object.keyword }}</p>
+    <p class="card-text text-muted"><strong>Research Keyword:</strong> {{ object.keyword }}</p>
     <hr>
     <a href="{% url 'research:discussions' object.id %}">
-        <button type="button" class="btn btn-outline-primary btn-sm">
-        Discussions ({{ object.discussions.count }})</button></a>
+      <button type="button" class="btn btn-outline-primary btn-sm"> Leave a discussion -
+        ({{ object.discussions.count }})</button></a>
     <hr>
     <blockquote class="blockquote mb-0">
-        <br>
-    <footer class="blockquote-footer">Scraped by <cite title="Source Title">Health Research Portal</cite></footer>
+      <br>
+      <footer class="blockquote-footer">Scraped by <cite title="Source Title"><span class="badge badge-success">Health
+            Research Portal</span></cite></footer>
     </blockquote>
   </div>
 </div>

@@ -11,7 +11,12 @@ from django.views.generic import (
     TemplateView,
 )
 
-from .forms import CustomUserCreationForm, ReviewForm
+from .forms import (
+    CustomUserCreationForm,
+    DiscussionForm,
+    ReplyForm,
+    ReviewForm,
+)
 from .models import Discussion, DiscussionReply, Recommends, Research, Review
 
 
@@ -33,7 +38,7 @@ class DiscussionCreateView(LoginRequiredMixin, CreateView):
     """Add discussions."""
 
     model = Discussion
-    fields = ["discussion"]
+    form_class = DiscussionForm
     template_name = "discussions.html"
     login_url = "login"
     redirect_field_name = "redirect_to"
@@ -65,7 +70,7 @@ class DiscussionReplyCreateView(LoginRequiredMixin, CreateView):
     """Add discussions."""
 
     model = DiscussionReply
-    fields = ["reply"]
+    form_class = ReplyForm
     template_name = "replies_to_discussions.html"
     login_url = "login"
     redirect_field_name = "redirect_to"
@@ -200,7 +205,7 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
 class CancerTemplateView(TemplateView):
     """Cancer page template view."""
 
-    template_name = "researches/cancer.html"
+    template_name = "researches/cancer/cancer.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
@@ -225,8 +230,7 @@ class CancerDiagnosisListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "cancer_diagnosis"
-    template_name = "researches/cancer_diagnosis.html"
+    template_name = "researches/cancer/cancer_diagnosis.html"
     paginate_by = 10
 
 
@@ -238,8 +242,7 @@ class CancerTreatmentListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "cancer_treatment"
-    template_name = "researches/cancer_treatment.html"
+    template_name = "researches/cancer/cancer_treatment.html"
     paginate_by = 10
 
 
@@ -251,25 +254,29 @@ class CancerLocationListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "cancer_location"
-    template_name = "researches/cancer_location.html"
+    template_name = "researches/cancer/cancer_location.html"
     paginate_by = 10
 
 
 class MalariaTemplateView(TemplateView):
     """Malaria page template view."""
 
-    template_name = "researches/malaria.html"
+    template_name = "researches/malaria/malaria.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
         context = super().get_context_data(**kwargs)
-        context["diagnosis_count"] = Research.objects.filter(
-            keyword="malaria:plasmodium"
-        ).count()  # Bug here
-        context["treatment_count"] = Research.objects.filter(
-            keyword="malaria:treatment"
-        ).count()
+        context["diagnosis_count"] = (
+            Research.objects.filter(keyword="malaria:plasmodium").count()
+            + Research.objects.filter(keyword="malaria:diagnosis").count()
+            + Research.objects.filter(keyword="malaria:climate").count()
+            + Research.objects.filter(keyword="malaria:water").count()
+            + Research.objects.filter(keyword="malaria:fever").count()
+        )
+        context["treatment_count"] = (
+            Research.objects.filter(keyword="malaria:treatment").count()
+            + Research.objects.filter(keyword="malaria:control").count()
+        )
         context["location_count"] = Research.objects.filter(
             keyword="malaria:county"
         ).count()
@@ -279,30 +286,40 @@ class MalariaTemplateView(TemplateView):
 class MalariaDiagnosisListView(ListView):
     """List view of researches."""
 
-    queryset = Research.objects.filter(keyword="malaria:plasmodium").annotate(
-        research_count=Count("researches__recommends")
-    ).order_by("-research_count") | Research.objects.filter(
-        keyword="malaria:diagnosis"
-    ).annotate(
-        research_count=Count("researches__recommends")
-    ).order_by(
-        "-research_count"
+    queryset = (
+        Research.objects.filter(keyword="malaria:plasmodium")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+        | Research.objects.filter(keyword="malaria:diagnosis")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+        | Research.objects.filter(keyword="malaria:climate")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+        | Research.objects.filter(keyword="malaria:fever")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+        | Research.objects.filter(keyword="malaria:water")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
     )
-    context_object_name = "malaria_diagnosis"
-    template_name = "researches/malaria_diagnosis.html"
+    template_name = "researches/malaria/malaria_diagnosis.html"
     paginate_by = 10
 
 
 class MalariaTreatmentListView(ListView):
     """List view of researches."""
 
-    queryset = (
-        Research.objects.filter(keyword="malaria:treatment")
-        .annotate(research_count=Count("researches__recommends"))
-        .order_by("-research_count")
+    queryset = Research.objects.filter(keyword="malaria:treatment").annotate(
+        research_count=Count("researches__recommends")
+    ).order_by("-research_count") | Research.objects.filter(
+        keyword="malaria:control"
+    ).annotate(
+        research_count=Count("researches__recommends")
+    ).order_by(
+        "-research_count"
     )
-    context_object_name = "malaria_treatment"
-    template_name = "researches/malaria_treatment.html"
+    template_name = "researches/malaria/malaria_treatment.html"
     paginate_by = 10
 
 
@@ -314,21 +331,28 @@ class MalariaLocationListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "malaria_location"
-    template_name = "researches/malaria_location.html"
+    template_name = "researches/malaria/malaria_location.html"
     paginate_by = 10
 
 
 class CholeraTemplateView(TemplateView):
     """Cholera page template view."""
 
-    template_name = "researches/cholera.html"
+    template_name = "researches/cholera/cholera.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
         context = super().get_context_data(**kwargs)
-        context["treatment_count"] = Research.objects.filter(
-            keyword="cholera:treatment"
+        context["treatment_count"] = (
+            Research.objects.filter(keyword="cholera:treatment").count()
+            + Research.objects.filter(keyword="cholera:control").count()
+        )
+        context["diagnosis_count"] = (
+            Research.objects.filter(keyword="cholera:diagnostic").count()
+            + Research.objects.filter(keyword="cholera:food").count()
+        )
+        context["county_count"] = Research.objects.filter(
+            keyword="cholera:county"
         ).count()
         return context
 
@@ -336,32 +360,81 @@ class CholeraTemplateView(TemplateView):
 class CholeraTreatmentListView(ListView):
     """List view of researches."""
 
+    queryset = Research.objects.filter(keyword="cholera:treatment").annotate(
+        research_count=Count("researches__recommends")
+    ).order_by("-research_count") | Research.objects.filter(
+        keyword="cholera:control"
+    ).annotate(
+        research_count=Count("researches__recommends")
+    ).order_by(
+        "-research_count"
+    )
+    template_name = "researches/cholera/cholera_treatment.html"
+    paginate_by = 10
+
+
+class CholeraDiagnosisListView(ListView):
+    """List view of researches."""
+
+    queryset = Research.objects.filter(keyword="cholera:diagnostic").annotate(
+        research_count=Count("researches__recommends")
+    ).order_by("-research_count") | Research.objects.filter(
+        keyword="cholera:food"
+    ).annotate(
+        research_count=Count("researches__recommends")
+    ).order_by(
+        "-research_count"
+    )
+    template_name = "researches/cholera/cholera_diagnosis.html"
+    paginate_by = 10
+
+
+class CholeraLocationListView(ListView):
+    """List view of researches."""
+
     queryset = (
-        Research.objects.filter(keyword="cholera:treatment")
+        Research.objects.filter(keyword="cholera:county")
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "cholera_treatment"
-    template_name = "researches/cholera_treatment.html"
+    template_name = "researches/cholera/cholera_location.html"
     paginate_by = 10
 
 
 class TyphoidTemplateView(TemplateView):
     """Typhoid page template view."""
 
-    template_name = "researches/typhoid.html"
+    template_name = "researches/typhoid/typhoid.html"
+
+    def get_context_data(self, **kwargs):
+        """Get template contexts."""
+        context = super().get_context_data(**kwargs)
+        context["treatment_count"] = (
+            Research.objects.filter(keyword="typhoid:treatment").count()
+            + Research.objects.filter(keyword="typhoid:isolates").count()
+        )
+        context["county_count"] = Research.objects.filter(
+            keyword="typhoid:county"
+        ).count()
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="typhoid:diagnosis"
+        ).count()
+        return context
 
 
 class TyphoidTreatmentListView(ListView):
     """List view of researches."""
 
-    queryset = (
-        Research.objects.filter(keyword="typhoid:treatment")
-        .annotate(research_count=Count("researches__recommends"))
-        .order_by("-research_count")
+    queryset = Research.objects.filter(keyword="typhoid:treatment").annotate(
+        research_count=Count("researches__recommends")
+    ).order_by("-research_count") | Research.objects.filter(
+        keyword="typhoid:isolates"
+    ).annotate(
+        research_count=Count("researches__recommends")
+    ).order_by(
+        "-research_count"
     )
-    context_object_name = "typhoid_treatment"
-    template_name = "researches/typhoid_treatment.html"
+    template_name = "researches/typhoid/typhoid_treatment.html"
     paginate_by = 10
 
 
@@ -373,21 +446,26 @@ class TyphoidLocationListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "typhoid_location"
-    template_name = "researches/typhoid_location.html"
+    template_name = "researches/typhoid/typhoid_location.html"
     paginate_by = 10
 
 
 class TBTemplateView(TemplateView):
     """TB page template view."""
 
-    template_name = "researches/TB.html"
+    template_name = "researches/TB/TB.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
         context = super().get_context_data(**kwargs)
         context["treatment_count"] = Research.objects.filter(
-            keyword="typhoid:treatment"
+            keyword="tuberculosis:treatment"
+        ).count()
+        context["diagnosis_count"] = Research.objects.filter(
+            keyword="tuberculosis:diagnosis"
+        ).count()
+        context["county_count"] = Research.objects.filter(
+            keyword="tuberculosis:county"
         ).count()
         return context
 
@@ -400,15 +478,38 @@ class TBTreatmentListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "TB_treatment"
-    template_name = "researches/TB_treatment.html"
+    template_name = "researches/TB/TB_treatment.html"
+    paginate_by = 10
+
+
+class TBDiagnosisListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="tuberculosis:diagnosis")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    template_name = "researches/TB/TB_diagnosis.html"
+    paginate_by = 10
+
+
+class TBCountyListView(ListView):
+    """List view of researches."""
+
+    queryset = (
+        Research.objects.filter(keyword="tuberculosis:county")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    template_name = "researches/TB/TB_county.html"
     paginate_by = 10
 
 
 class MeaslesTemplateView(TemplateView):
     """Measles page template view."""
 
-    template_name = "researches/measles.html"
+    template_name = "researches/measles/measles.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
@@ -427,15 +528,14 @@ class MeaslesLocationListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "measles_location"
-    template_name = "researches/measles_location.html"
+    template_name = "researches/measles/measles_location.html"
     paginate_by = 10
 
 
 class DiabetesTemplateView(TemplateView):
     """Diabetes page template view."""
 
-    template_name = "researches/diabetes.html"
+    template_name = "researches/diabetes/diabetes.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
@@ -457,8 +557,7 @@ class DiabetesDiagnosisListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "diabetes_diagnosis"
-    template_name = "researches/diabetes_diagnosis.html"
+    template_name = "researches/diabetes/diabetes_diagnosis.html"
     paginate_by = 10
 
 
@@ -470,15 +569,14 @@ class DiabetesTreatmentListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "diabetes_treatment"
-    template_name = "researches/diabetes_treatment.html"
+    template_name = "researches/diabetes/diabetes_treatment.html"
     paginate_by = 10
 
 
 class PneumoniaTemplateView(TemplateView):
     """Pneumonia page template view."""
 
-    template_name = "researches/pneumonia.html"
+    template_name = "researches/pneumonia/pneumonia.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
@@ -497,15 +595,14 @@ class PneumoniaDiagnosisListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "pneumonia_diagnosis"
-    template_name = "researches/pneumonia_diagnosis.html"
+    template_name = "researches/pneumonia/pneumonia_diagnosis.html"
     paginate_by = 10
 
 
 class MalnutritionTemplateView(TemplateView):
     """Malnutrition page template view."""
 
-    template_name = "researches/malnutrition.html"
+    template_name = "researches/malnutrition/malnutrition.html"
 
     def get_context_data(self, **kwargs):
         """Get template contexts."""
@@ -527,8 +624,7 @@ class MalnutritionTreatmentListView(ListView):
         .annotate(research_count=Count("researches__recommends"))
         .order_by("-research_count")
     )
-    context_object_name = "malnutrition_treatment"
-    template_name = "researches/malnutrition_treatment.html"
+    template_name = "researches/malnutrition/malnutrition_treatment.html"
     paginate_by = 10
 
 
@@ -541,7 +637,7 @@ class MalnutritionLocationListView(ListView):
         .order_by("-research_count")
     )
     context_object_name = "malnutrition_location"
-    template_name = "researches/malnutrition_location.html"
+    template_name = "researches/malnutrition/malnutrition_location.html"
     paginate_by = 10
 
 

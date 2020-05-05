@@ -72,6 +72,16 @@ urlpatterns = [
         views.CholeraTreatmentListView.as_view(),
         name="cholera_treatment",
     ),
+    path(
+        "cholera/diagnosis/",
+        views.CholeraDiagnosisListView.as_view(),
+        name="cholera_diagnosis",
+    ),
+    path(
+        "cholera/county/",
+        views.CholeraLocationListView.as_view(),
+        name="cholera_county",
+    ),
     path("typhoid/", views.TyphoidTemplateView.as_view(), name="typhoid",),
     path(
         "typhoid/treatment/",
@@ -88,6 +98,14 @@ urlpatterns = [
         "TB/treatment/",
         views.TBTreatmentListView.as_view(),
         name="TB_treatment",
+    ),
+    path(
+        "TB/diagnosis/",
+        views.TBDiagnosisListView.as_view(),
+        name="TB_diagnosis",
+    ),
+    path(
+        "TB/county-based/", views.TBCountyListView.as_view(), name="TB_county",
     ),
     path("measles/", views.MeaslesTemplateView.as_view(), name="measles",),
     path(

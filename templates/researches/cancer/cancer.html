@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item">Cancer</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4>Cancer</h4>
+    <hr>
+    <p class="lead text-muted"><small>
+        Cancers figure among the leading causes of death worldwide, accounting for 9.6 million
+        deaths in 2018. Lung, colorectal, stomach, liver and breast cancers cause the most cancer
+        deaths each year. The most frequent types of cancer differ between men and women.
+        About one-third of cancer deaths are due to the five leading behavioral and dietary risks:
+        high body mass index, low fruit and vegetable intake, physical inactivity, tobacco use,
+        alcohol use and are therefore preventable.</small>
+    </p>
+  </div>
+</div>
+{% endblock jumbotron %}
+
+{% block research %}
+<ul class="list-group col-md-6">
+  <a href="{% url 'research:cancer_diagnosis' %}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Cause & Diagnosis
+      <span class="badge badge-primary badge-pill">{{ diagnosis_count }}</span>
+    </li>
+  </a>
+  <a href="{% url 'research:cancer_treatment' %}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Control & Treatment
+      <span class="badge badge-primary badge-pill">{{ treatment_count }}</span>
+    </li>
+  </a>
+  <a href="{% url 'research:cancer_location' %}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      County-based
+      <span class="badge badge-primary badge-pill">{{ location_count }}</span>
+    </li>
+  </a>
+</ul>
+{% endblock %}

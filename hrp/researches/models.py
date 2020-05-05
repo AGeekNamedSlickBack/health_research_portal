@@ -16,7 +16,7 @@ class Research(models.Model):
     class Meta:
         """Meta class."""
 
-        verbose_name = "Researche"
+        verbose_name_plural = "Research"
 
     def __str__(self):
         """Rep title into a human readable form."""
@@ -57,7 +57,7 @@ class DiscussionReply(models.Model):
         """Meta class."""
 
         ordering = ["-created_on"]
-        verbose_name = "Replie"
+        verbose_name_plural = "Replies"
 
     def __str__(self):
         """Human readable form."""
@@ -77,7 +77,7 @@ class Recommends(models.Model):
     class Meta:
         """Model meta options."""
 
-        verbose_name = "Recommend"
+        verbose_name_plural = "Recommend"
 
     def __str__(self):
         """Human readable form."""
