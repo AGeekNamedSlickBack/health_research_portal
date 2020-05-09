@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'research:typhoid' %}">Typhoid</a></li>
+    <li class="breadcrumb-item">Location</li>
+  </ol>
+</nav>
+{% endblock%}
+
+{% block research %}
+{% include "researches/researches.html" %}
+{% endblock %}

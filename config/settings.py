@@ -51,7 +51,7 @@ def get_bool_env(env_var, default=False):
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = get_bool_env("DEBUG", False)
+DEBUG = get_bool_env("DEBUG", True)
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "hrp.duckdns.org"]
 

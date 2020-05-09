@@ -3,9 +3,18 @@
 KEYWORDS = [
     ["plasmodium"],
     ["diagnosis"],
+    ["diagnostic"],
+    ["food"],
+    ["laboratories"],
     ["treatment"],
+    ["control"],
     ["location"],
     ["county"],
+    ["isolates"],
+    ["fever"],
+    ["salmonella"],
+    ["water"],
+    ["climate",],
 ]  # Get better key words
 
 URL_LIST = [
@@ -20,4 +29,5 @@ URL_LIST = [
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=diabetes+mellitus&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=malnutrition&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
     "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=asthma&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
+    "http://erepository.uonbi.ac.ke/discover?scope=%2F&query=hiv&submit=&rpp=20&sort_by=dc.date.issued_dt&order=desc",
 ]
