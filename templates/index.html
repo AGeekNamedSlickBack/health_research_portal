@@ -8,15 +8,55 @@
     <hr>
     <p class="lead text-muted">
       <smaller>
-        Where health researches have been found and intelligently categorized for you
-        to help you utilize them better and interact with other health experts on relevant matters.
+        Automated Health Research Portal is built upon three pillars:
       </smaller>
     </p>
+    <br>
+    <div class="row">
+      <div class="col-4">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+          <div class="card-body text-success">
+            <h5 class="card-title"><strong>Sourcing</strong></h5>
+            <hr>
+            <p class="card-text">We automate the process of looking for researches from the vast online space.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+          <div class="card-body text-success">
+            <h5 class="card-title"><strong>Categorization</strong></h5>
+            <hr>
+            <p class="card-text">We assign the mined data into smart categories dicatated by WHO
+              ICD-10 guidelines.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+          <div class="card-body text-success">
+            <h5 class="card-title"><strong>User Participation</strong></h5>
+            <hr>
+            <p class="card-text">We allow users to share their recommendations and thoughts on the data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock%}
 
 {% block research %}
+<div class="covid_container">
+  <img src="{% static 'images/covid.png' %}" alt="Covid Information" style="width: 100%;">
+  <div class="centered">
+    <a href="{% url 'research:covid' %}" class="badge badge-danger">
+      <h3>Covid-19 Publications</h3>
+    </a>
+  </div>
+  <br>
+  <br>
+</div>
 <button type="button" class="collapsible"> CERTAIN INFECTIOUS AND PARASITIC DISEASES</button>
 <div class="content">
   <br>

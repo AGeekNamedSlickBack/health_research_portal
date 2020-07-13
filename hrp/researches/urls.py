@@ -152,4 +152,5 @@ urlpatterns = [
         views.Covid19TemplateView.as_view(),
         name="covid-19",
     ),
+    path("covid/", views.CovidTemplateView.as_view(), name="covid",),
 ]

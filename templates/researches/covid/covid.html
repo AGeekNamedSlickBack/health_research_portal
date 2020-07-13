@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'research:index' %}">Home</a></li>
+        <li class="breadcrumb-item">Covid-19</li>
+    </ol>
+</nav>
+{% endblock%}
+
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h4>Covid-19</h4>
+        <hr>
+        <a href="{% url 'research:covid-19' %}"><button type="button" class="btn btn-outline-primary">Get more
+                information on the Coronavirus...</button></a>
+    </div>
+</div>
+{% endblock jumbotron %}
+
+{% block research %}
+<h4>Global Researches on Coronavirus</h4>
+{% include "researches/researches.html" %}
+{% endblock %}
