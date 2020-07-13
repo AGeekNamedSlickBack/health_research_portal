@@ -197,3 +197,17 @@ margin-right: 15px;
   margin-right: auto !important;
   display: block !important;
 }
+
+/* Covid banner */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.covid_container {
+  position: relative;
+  text-align: center;
+  color: black;
+}

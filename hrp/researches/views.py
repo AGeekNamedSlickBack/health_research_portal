@@ -644,4 +644,16 @@ class MalnutritionLocationListView(ListView):
 class Covid19TemplateView(TemplateView):
     """Add custom covid-19 information."""
 
-    template_name = "covid-19.html"
+    template_name = "covid-19.html"  # TODO Blend with Covid category page
+
+
+class CovidTemplateView(ListView):
+    """Covid page template view."""
+
+    template_name = "researches/covid/covid.html"
+    queryset = (
+        Research.objects.filter(keyword="Covid-19")
+        .annotate(research_count=Count("researches__recommends"))
+        .order_by("-research_count")
+    )
+    paginate_by = 10
