@@ -8,16 +8,26 @@ from nltk.tokenize import word_tokenize
 from hrp.common.util import KEYWORDS, URL_LIST
 from hrp.researches.models import Research
 
+requests.packages.urllib3.disable_warnings(
+    requests.packages.urllib3.exceptions.InsecureRequestWarning
+)
+
 
 def scraper():
     """Scrape certified repositories."""
     category_list = []
     for URL in URL_LIST:
-        page = requests.get(URL)
+        page = requests.get(URL, verify=False)  # Bypass untrusted SSL
         soup = BeautifulSoup(page.content, "html.parser")
 
-        results = soup.find(id="main-container")
-        researches = results.find_all(class_="col-sm-9 artifact-description")
+        if "ir.jkuat.ac.ke" in URL:
+            results = soup.find(id="ds-content-wrapper")
+            researches = results.find_all(class_="ds-artifact-list")
+        else:
+            results = soup.find(id="main-container")
+            researches = results.find_all(
+                class_="col-sm-9 artifact-description"
+            )
 
         # Fetch the categories from the urls
         category = URL.split("&")[1]
@@ -27,11 +37,23 @@ def scraper():
             category = item.split("=")[1]
 
         for research in researches:
-            url = "http://erepository.uonbi.ac.ke" + research.find("a")["href"]
-            title = research.find("h4").text
+            if "ir-library.ku.ac.ke" in URL:
+                url = (
+                    "https://ir-library.ku.ac.ke" + research.find("a")["href"]
+                )
+                title = research.find("h4").text
+            if "erepository.uonbi.ac.ke" in URL:
+                url = (
+                    "http://erepository.uonbi.ac.ke"
+                    + research.find("a")["href"]
+                )
+                title = research.find("h4").text
+            if "ir.jkuat.ac.ke" in URL:
+                url = "http://ir.jkuat.ac.ke" + research.find("a")["href"]
+                title = research.find(class_="artifact-title").text
 
             #  Get the keywords
-            response = requests.get(url)
+            response = requests.get(url, verify=False)
             text = BeautifulSoup(response.content, "html.parser")
             text = text.get_text()
 
