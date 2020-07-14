@@ -6,6 +6,24 @@ from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
+KEYWORDS = [
+    ["plasmodium"],
+    ["diagnosis"],
+    ["diagnostic"],
+    ["food"],
+    ["laboratories"],
+    ["treatment"],
+    ["control"],
+    ["location"],
+    ["county"],
+    ["isolates"],
+    ["fever"],
+    ["salmonella"],
+    ["water"],
+    ["climate",],
+    ["hpv"],
+]
+
 
 def nlp():
     """Process researches abstracts for key words."""
@@ -36,6 +54,17 @@ def nlp():
     count_word_frequency = count_word_frequency.most_common(
         10
     )  # Gets most frequent words
+    get_keywords = [
+        [j for j in i if type(j) == str] for i in count_word_frequency
+    ]
+    keyword = [
+        _keyword for _keyword in KEYWORDS if _keyword in get_keywords
+    ]  # Compares keywords with most_common words
+    keyword = ",".join(keyword[0])  # Gets the intersect
+    # keyword = "{}:{}".format(category, keyword)
+    import pdb
+
+    pdb.set_trace()
 
     print(count_word_frequency)
 
