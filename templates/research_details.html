@@ -30,6 +30,11 @@
       <button type="button" class="btn btn-outline-primary btn-sm"> Leave a discussion -
         ({{ object.discussions.count }})</button></a>
     <hr>
+    <br>
+    <h3> Read the Abstract</h3>
+    <hr>
+    {{ object.abstract }}
+    <hr>
     <blockquote class="blockquote mb-0">
       <br>
       <footer class="blockquote-footer">Scraped by <cite title="Source Title"><span class="badge badge-success">Health
@@ -37,4 +42,5 @@
     </blockquote>
   </div>
 </div>
+<br>
 {% endblock%}

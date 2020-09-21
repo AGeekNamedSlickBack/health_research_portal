@@ -48,18 +48,25 @@ def scraper():
                     + research.find("a")["href"]
                 )
                 title = research.find("h4").text
-            if "ir.jkuat.ac.ke" in URL:
-                url = "http://ir.jkuat.ac.ke" + research.find("a")["href"]
-                title = research.find(class_="artifact-title").text
+            # if "ir.jkuat.ac.ke" in URL:
+            #     url = "http://ir.jkuat.ac.ke" + research.find("a")["href"]
+            #     title = research.find(class_="artifact-title").text
 
             #  Get the keywords
             response = requests.get(url, verify=False)
             text = BeautifulSoup(response.content, "html.parser")
-            text = text.get_text()
+            # text = text.get_text()
+            # try:
+            abstract = text.find(
+                "div",
+                class_="simple-item-view-description item-page-field-wrapper table",
+            ).find("div")
+            # except AttributeError:
+            #     abstract = None
 
             # Remove stop words like 'a' 'the' 'an'
             stop_words = set(stopwords.words("english"))
-            word_tokens = word_tokenize(text)
+            word_tokens = word_tokenize(str(abstract))
 
             # Remove punctuations and lower upper cases
             word_tokens = [
@@ -97,9 +104,15 @@ def scraper():
             if None in (url, title):
                 continue
 
+            # import pdb; pdb.set_trace()
+
             try:
                 Research.objects.create(
-                    url=url, title=title, category=category, keyword=keyword
+                    url=url,
+                    title=title,
+                    category=category,
+                    keyword=keyword,
+                    abstract=str(abstract),
                 )
                 print(
                     "{} - {} successfully added in category {} - {}".format(

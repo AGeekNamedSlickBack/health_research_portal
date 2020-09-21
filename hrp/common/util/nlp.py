@@ -28,17 +28,18 @@ KEYWORDS = [
 def nlp():
     """Process researches abstracts for key words."""
     response = urllib.request.urlopen(
-        "http://erepository.uonbi.ac.ke/handle/11295/109176"
+        "https://ir-library.ku.ac.ke/handle/123456789/4417"
     )  # TODO Fetch urls from db
     html = response.read()
 
     text = BeautifulSoup(html, "html.parser")
-    text = text.get_text()  # TODO parse just the abstract, not whole page
+    # text = text.get_text()  # TODO parse just the abstract, not whole page
     #  print(text)
-
+    import pdb; pdb.set_trace()
+    abstract = text.find("div", class_="simple-item-view-description item-page-field-wrapper table").find("div")
     # Remove stop words like 'a' 'the' 'an'
     stop_words = set(stopwords.words("english"))
-    word_tokens = word_tokenize(text)
+    word_tokens = word_tokenize(str(abstract))
 
     # Remove punctuations and lower upper cases
     word_tokens = [word.lower() for word in word_tokens if word.isalpha()]

@@ -692,7 +692,10 @@ Sample frontend pages
 
 **4. Research details page**
 
-.. image:: images/malaria_detail.png
+.. image:: images/abs.png
+   :alt: Details
+
+.. image:: images/abs2.png
    :alt: Details
 
 *Figure 21: Sample research details page*
