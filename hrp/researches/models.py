@@ -12,6 +12,7 @@ class Research(models.Model):
     scraped_date = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=250)
     keyword = models.CharField(max_length=100)
+    abstract = models.TextField()
 
     class Meta:
         """Meta class."""
