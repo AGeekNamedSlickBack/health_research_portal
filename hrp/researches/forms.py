@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Review, Discussion, DiscussionReply
+from .models import Discussion, DiscussionReply, Review
 
 
 class CustomUserCreationForm(UserCreationForm):
