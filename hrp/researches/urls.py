@@ -5,7 +5,11 @@ from . import views
 
 app_name = "researches"
 urlpatterns = [
-    path("", views.Index.as_view(), name="index",),
+    path(
+        "",
+        views.Index.as_view(),
+        name="index",
+    ),
     path("signup/", views.SignUp.as_view(), name="signup"),
     path(
         "discussions/<int:pk>",
@@ -31,10 +35,20 @@ urlpatterns = [
         "<int:pk>/", views.ResearchDetailView.as_view(), name="research-detail"
     ),
     path(
-        "reviews/<int:pk>", views.ReviewCreateView.as_view(), name="reviews",
+        "reviews/<int:pk>",
+        views.ReviewCreateView.as_view(),
+        name="reviews",
     ),
-    path("search/", views.Search.as_view(), name="search",),
-    path("cancer/", views.CancerTemplateView.as_view(), name="cancer",),
+    path(
+        "search/",
+        views.Search.as_view(),
+        name="search",
+    ),
+    path(
+        "cancer/",
+        views.CancerTemplateView.as_view(),
+        name="cancer",
+    ),
     path(
         "cancer/diagnosis/",
         views.CancerDiagnosisListView.as_view(),
@@ -50,7 +64,11 @@ urlpatterns = [
         views.CancerLocationListView.as_view(),
         name="cancer_location",
     ),
-    path("malaria/", views.MalariaTemplateView.as_view(), name="malaria",),
+    path(
+        "malaria/",
+        views.MalariaTemplateView.as_view(),
+        name="malaria",
+    ),
     path(
         "malaria/diagnosis/",
         views.MalariaDiagnosisListView.as_view(),
@@ -66,7 +84,11 @@ urlpatterns = [
         views.MalariaLocationListView.as_view(),
         name="malaria_location",
     ),
-    path("cholera/", views.CholeraTemplateView.as_view(), name="cholera",),
+    path(
+        "cholera/",
+        views.CholeraTemplateView.as_view(),
+        name="cholera",
+    ),
     path(
         "cholera/treatment/",
         views.CholeraTreatmentListView.as_view(),
@@ -82,7 +104,11 @@ urlpatterns = [
         views.CholeraLocationListView.as_view(),
         name="cholera_county",
     ),
-    path("typhoid/", views.TyphoidTemplateView.as_view(), name="typhoid",),
+    path(
+        "typhoid/",
+        views.TyphoidTemplateView.as_view(),
+        name="typhoid",
+    ),
     path(
         "typhoid/treatment/",
         views.TyphoidTreatmentListView.as_view(),
@@ -93,7 +119,11 @@ urlpatterns = [
         views.TyphoidLocationListView.as_view(),
         name="typhoid_location",
     ),
-    path("TB/", views.TBTemplateView.as_view(), name="TB",),
+    path(
+        "TB/",
+        views.TBTemplateView.as_view(),
+        name="TB",
+    ),
     path(
         "TB/treatment/",
         views.TBTreatmentListView.as_view(),
@@ -105,15 +135,25 @@ urlpatterns = [
         name="TB_diagnosis",
     ),
     path(
-        "TB/county-based/", views.TBCountyListView.as_view(), name="TB_county",
+        "TB/county-based/",
+        views.TBCountyListView.as_view(),
+        name="TB_county",
     ),
-    path("measles/", views.MeaslesTemplateView.as_view(), name="measles",),
+    path(
+        "measles/",
+        views.MeaslesTemplateView.as_view(),
+        name="measles",
+    ),
     path(
         "measles/location/",
         views.MeaslesLocationListView.as_view(),
         name="measles_location",
     ),
-    path("diabetes/", views.DiabetesTemplateView.as_view(), name="diabetes",),
+    path(
+        "diabetes/",
+        views.DiabetesTemplateView.as_view(),
+        name="diabetes",
+    ),
     path(
         "diabetes/diagnosis/",
         views.DiabetesDiagnosisListView.as_view(),
@@ -125,7 +165,9 @@ urlpatterns = [
         name="diabetes_treatment",
     ),
     path(
-        "pneumonia/", views.PneumoniaTemplateView.as_view(), name="pneumonia",
+        "pneumonia/",
+        views.PneumoniaTemplateView.as_view(),
+        name="pneumonia",
     ),
     path(
         "pneumonia/diagnosis/",
@@ -152,5 +194,9 @@ urlpatterns = [
         views.Covid19TemplateView.as_view(),
         name="covid-19",
     ),
-    path("covid/", views.CovidTemplateView.as_view(), name="covid",),
+    path(
+        "covid/",
+        views.CovidTemplateView.as_view(),
+        name="covid",
+    ),
 ]

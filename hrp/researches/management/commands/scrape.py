@@ -7,10 +7,10 @@ from hrp.common.util.scraper import scraper
 class Command(BaseCommand):
     """Create a custom 'scrape' command."""
 
-    help = 'Scrapes research'
+    help = "Scrapes research"
 
     def handle(self, *args, **options):
         """Scrape command."""
         scraper()
 
-        self.stdout.write(self.style.SUCCESS('Successfully scraped.'))
+        self.stdout.write(self.style.SUCCESS("Successfully scraped."))
